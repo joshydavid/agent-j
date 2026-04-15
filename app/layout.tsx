@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 import { EXTERNAL_LINKS } from "@/app/constants/links";
-import { Providers } from "@/app/providers";
 
 import "./globals.css";
 
@@ -53,87 +52,81 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
-=======
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
->>>>>>> 5a1485fa9760eaebf949e036a5b8d01218826c3d
       <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white dark:bg-black p-4 no-scrollbar">
-        <Providers>
-          <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
-            {/* Sidebar / Navigation */}
-            <div className="w-full md:w-64 md:border-r md:border-slate-100 md:dark:border-slate-900 shrink-0">
-              <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16">
-                <div className="mb-2 md:mb-12">
-                  <Link href="/" className="inline-block group">
-                    <Image
-                      src={EXTERNAL_LINKS.PROFILE_PICTURE}
-                      alt="Joshua"
-                      width={48}
-                      height={48}
-                      className="h-12 w-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                      loading="eager"
-                    />
+        <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
+          {/* Sidebar / Navigation */}
+          <div className="w-full md:w-64 md:border-r md:border-slate-100 md:dark:border-slate-900 shrink-0">
+            <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16">
+              <div className="mb-2 md:mb-12">
+                <Link href="/" className="inline-block group">
+                  <Image
+                    src={EXTERNAL_LINKS.PROFILE_PICTURE}
+                    alt="Joshua"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                    loading="eager"
+                  />
+                </Link>
+              </div>
+              <ul className="flex flex-row md:flex-col gap-6 md:gap-4">
+                <li>
+                  <Link
+                    href="/"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
+                  >
+                    about
                   </Link>
-                </div>
-                <ul className="flex flex-row md:flex-col gap-6 md:gap-4">
-                  <li>
-                    <Link
-                      href="/"
-                      className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
-                    >
-                      about
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/projects"
-                      className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
-                    >
-                      projects
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/blog"
-                      className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
-                    >
-                      blog
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            <div className="flex-1 md:overflow-y-auto no-scrollbar">
-              <main className="max-w-3xl px-8 py-4 md:px-16 md:py-16">
-                {children}
-                <footer className="mt-16 pt-4">
-                  <div className="flex gap-4">
-                    <a
-                      href={EXTERNAL_LINKS.GITHUB}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
-                      aria-label="GitHub"
-                    >
-                      <FaGithub size={18} />
-                    </a>
-                    <a
-                      href={EXTERNAL_LINKS.LINKEDIN}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
-                      aria-label="LinkedIn"
-                    >
-                      <FaLinkedinIn size={18} />
-                    </a>
-                  </div>
-                </footer>
-              </main>
-            </div>
+                </li>
+                <li>
+                  <Link
+                    href="/projects"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
+                  >
+                    projects
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
+                  >
+                    blog
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
-        </Providers>
+
+          <div className="flex-1 md:overflow-y-auto no-scrollbar">
+            <main className="max-w-3xl px-8 py-4 md:px-16 md:py-16">
+              {children}
+              <footer className="mt-16 pt-4">
+                <div className="flex gap-4">
+                  <a
+                    href={EXTERNAL_LINKS.GITHUB}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
+                    aria-label="GitHub"
+                  >
+                    <FaGithub size={18} />
+                  </a>
+                  <a
+                    href={EXTERNAL_LINKS.LINKEDIN}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedinIn size={18} />
+                  </a>
+                </div>
+              </footer>
+            </main>
+          </div>
+        </div>
       </body>
     </html>
   );
