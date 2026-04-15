@@ -71,7 +71,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <h2 className="text-2xl font-semibold text-black dark:text-white">tech stack</h2>
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <li key={tech} className="rounded-full border border-slate-200 px-3 py-1 text-sm dark:border-slate-700">
+                <li
+                  key={tech}
+                  className="rounded-full border list-none  border-slate-200 px-3 py-1 text-sm dark:border-slate-700"
+                >
                   {tech}
                 </li>
               ))}

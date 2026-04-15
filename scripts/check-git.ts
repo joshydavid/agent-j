@@ -1,26 +1,31 @@
 import { $ } from "bun";
+import { readFileSync } from "node:fs";
 
-// 1. Check if any commits exist
-const commitCount = parseInt(await $`git rev-list --count HEAD 2>/dev/null || echo 0`.text());
+// 1. Handle commit message retrieval
+const messageFilePath = process.argv[2];
+let commitMsg = "";
 
-if (commitCount === 0) {
-  console.log("ℹ️ no commits found. skipping git vibe check for initialization.");
-  process.exit(0);
+if (messageFilePath) {
+  commitMsg = readFileSync(messageFilePath, "utf8").split("\n")[0].trim();
+} else {
+  // Fix: Await the output first to access exitCode
+  const output = await $`git rev-parse --verify HEAD`.quiet();
+  if (output.exitCode !== 0) {
+    console.log("ℹ️ no commits found. skipping.");
+    process.exit(0);
+  }
+  commitMsg = (await $`git log -1 --pretty=%B`.text()).split("\n")[0].trim();
 }
 
-// 2. Grab the latest commit message
-const commitMsg = (await $`git log -1 --pretty=%B`.text()).trim();
-
-// 3. Define allowed types from agents.md
 const types = ["feat", "fix", "docs", "style", "refactor", "chore"];
 const typePattern = types.join("|");
-
-// 4. Regex: type: lowercase description (imperative, no period)
+// Invariant: lowercase description, imperative, no period
 const gitRegex = new RegExp(`^(${typePattern}): [a-z0-9\\s-]+(?<!\\.)$`);
 
 if (!gitRegex.test(commitMsg)) {
   console.error(`❌ git vibe check failed`);
   console.error(`   message: "${commitMsg}"`);
+  console.error(`   invariant: lowercase description, imperative, no period`);
   process.exit(1);
 }
 
