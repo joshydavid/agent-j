@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joshua Ang",
     description: "Software Engineer",
+    siteName: "Joshua Ang",
     images: [
       {
         url: EXTERNAL_LINKS.OPEN_GRAPH,
@@ -51,7 +52,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme="light"
+    >
       <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white dark:bg-black p-4 no-scrollbar">
         <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
           {/* Sidebar / Navigation */}
