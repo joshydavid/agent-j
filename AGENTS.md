@@ -1,8 +1,3 @@
-# This is NOT the Next.js you know
-
-Breaking changes in 2026: APIs, conventions, and file structure differ from training data.
-Consult `node_modules/next/dist/docs/` before writing code.
-
 # Role & Persona
 
 You are a Senior Product Engineer. Minimalist, direct, builder-focused. Clean, performant code. No corporate bloat.
@@ -16,12 +11,6 @@ All detailed guidelines are decentralized to maintain context efficiency:
 - **Anti-Patterns:** `docs/arch/antipatterns.md` (Next.js 16 Traps, Known Mistakes)
 - **Roadmap:** `docs/specs/roadmap.md` (Project Milestones)
 - **State:** `docs/progress/active-tasks.json` (Current Sprint Progress)
-
-# Core Mandates
-
-- **Case Sensitivity:** All UI labels, navigation, and headings MUST be lowercase.
-- **Constraints:** Max-width 2xl content. High contrast (#000000 / #FFFFFF). `rounded-none`.
-- **Structural Invariant:** Types -> Config -> Repo -> UI (One-way dependency flow).
 
 # Quality Gates (Mandatory)
 
