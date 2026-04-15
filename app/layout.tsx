@@ -52,11 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
-      data-theme="light"
-    >
+    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white dark:bg-black p-4 no-scrollbar">
         <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
           {/* Sidebar / Navigation */}
