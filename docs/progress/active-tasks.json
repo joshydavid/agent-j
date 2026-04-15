@@ -1,0 +1,15 @@
+{
+  "project": "agent-j",
+  "milestones": [
+    {
+      "id": "refactor-harness",
+      "status": "completed",
+      "tasks": [
+        { "id": "setup-docs", "label": "create /docs directory structure", "status": "completed" },
+        { "id": "refactor-agents-md", "label": "shrink AGENTS.md to under 100 lines", "status": "completed" },
+        { "id": "implement-arch-check", "label": "create scripts/arch-check.ts", "status": "completed" },
+        { "id": "update-harness", "label": "update quality gates in AGENTS.md", "status": "completed" }
+      ]
+    }
+  ]
+}
