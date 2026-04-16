@@ -3,7 +3,7 @@ import { DeploymentStatus, Project, ProjectTag, TechStack } from "@/app/models/t
 export const projects: Project[] = [
   {
     id: 10,
-    name: "Agent M",
+    name: "agent m",
     slug: "agent-m",
     description:
       "a dynamic and fully autonomous agentic ai trading portfolio companion designed to navigate the complex digital financial landscape. leveraging a multi-agent ai architecture, the platform transforms real-time market data, traditional news, and internet sentiment into personalised, actionable investment decisions.",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
   },
   {
     id: 9,
-    name: "Brew Intelligence",
+    name: "brew intelligence",
     slug: "brew-intelligence",
     description:
       "brew intelligence - your personal coffee companion. whether you're pulling a perfect espresso, dialing in a v60, or experimenting with your coffee setup, brew intelligence is here to help you brew better.",
@@ -74,7 +74,7 @@ export const projects: Project[] = [
   },
   {
     id: 8,
-    name: "Walking Trails @ CDC",
+    name: "walking trails @ cdc",
     slug: "walking-trails-cdc",
     description:
       "an innovative phygital initiative by the five community development councils (cdcs), in collaboration with government technology agency (govtech) to promote community engagement and an active lifestyle by blending brisk-walking with digital gamification.",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
   },
   {
     id: 7,
-    name: "HPB x GovTech Hackathon",
+    name: "hpb x govtech hackathon",
     slug: "scan",
     description:
       "problem statement - how might we improve this method of identifying healthier purchases so that hpb can reward individuals for making healthier choice purchases, regardless of where they shop?",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    name: "Sparks Portal",
+    name: "sparks",
     slug: "sparks",
     description:
       "one of the greenfield govtech internship projects i've worked on, sparks is a product recommender app that helps government agency users discover a suite of products built in-house.",
