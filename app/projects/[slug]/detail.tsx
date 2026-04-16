@@ -10,10 +10,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     return (
       <div className="animate-fade-in">
         <nav className="mb-8">
-          <Link
-            href="/projects"
-            className="text-sm font-medium text-black hover:text-slate-600"
-          >
+          <Link href="/projects" className="text-sm font-medium text-black hover:text-slate-600">
             ← back to projects
           </Link>
         </nav>
@@ -25,10 +22,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="animate-fade-in">
       <nav className="mb-8">
-        <Link
-          href="/projects"
-          className="text-sm font-medium text-black hover:text-slate-600"
-        >
+        <Link href="/projects" className="text-sm font-medium text-black hover:text-slate-600">
           ← back to projects
         </Link>
       </nav>
@@ -71,10 +65,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <h2 className="text-2xl font-semibold text-black">tech stack</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <div
-                  key={tech}
-                  className="rounded-full border  border-slate-200 px-3 py-1 text-sm"
-                >
+                <div key={tech} className="rounded-full border  border-slate-200 px-3 py-1 text-sm">
                   {tech}
                 </div>
               ))}

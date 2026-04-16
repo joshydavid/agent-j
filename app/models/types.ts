@@ -15,7 +15,6 @@ export enum TechStack {
   TYPESCRIPT = "TypeScript",
   NEXT_JS = "Next.js",
   TAILWIND_CSS = "Tailwind CSS",
-  SHADCN_UI = "shadcn/ui",
   KOA_JS = "Koa.js",
   TYPEORM = "TypeORM",
   POSTGRESQL = "PostgreSQL",
@@ -40,7 +39,7 @@ export enum TechStack {
   KUBERNETES = "Kubernetes",
   KONG_GATEWAY = "Kong Gateway",
   LARGE_LANGUAGE_MODELS = "LLMs",
-  AMAZON_WEB_SERVICES = "AWS",
+  AMAZON_WEB_SERVICES = "Amazon Web Services",
   AWS_S3 = "AWS S3",
 }
 
