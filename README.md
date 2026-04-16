@@ -1,38 +1,58 @@
-# JOSHYDAVID
+# Agent J
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A minimalist, high-performance web application built with the latest Next.js and React primitives.
 
-## Getting Started
+## 🚀 Tech Stack
 
-First, run the development server:
+- **Framework**: [Next.js 16 (Canary)](https://nextjs.org/)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Runtime & Package Manager**: [Bun](https://bun.sh/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Content**: [React Markdown](https://github.com/remarkjs/react-markdown) & [Gray Matter](https://github.com/jonschlinkert/gray-matter)
+
+## 🤖 The Agent
+
+This project is maintained by a **Senior Product Engineer** agent persona. The agent follows a strict architectural philosophy:
+- **Minimalist & Direct**: Focused on clean, performant code without corporate bloat.
+- **Quality Gates**: Every change is validated against structural invariants, linting, and type safety.
+- **Decentralized Documentation**: Detailed architectural guidelines are found in `docs/arch/`.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+Ensure you have [Bun](https://bun.sh/) installed on your machine.
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+bun install
+```
+
+### Development
+
+```bash
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun run build
+bun start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Contribution
 
-## Learn More
+We welcome contributions! To maintain the integrity of the project, please follow these guidelines:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - An interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - Your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Quality Gates
+Before submitting a Pull Request, ensure all quality gates pass:
+```bash
+bun run harness
+```
+This script executes:
+1. `eslint` (Style compliance)
+2. `tsc` (Type checking)
+3. `check-git` (Conventional commit verification)

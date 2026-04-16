@@ -53,10 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white dark:bg-black p-4 no-scrollbar">
+      <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white p-4 no-scrollbar">
         <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
           {/* Sidebar / Navigation */}
-          <div className="w-full md:w-64 md:border-r md:border-slate-100 md:dark:border-slate-900 shrink-0">
+          <div className="w-full md:w-64 md:border-r md:border-slate-100 shrink-0">
             <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16">
               <div className="mb-2 md:mb-12">
                 <Link href="/" className="inline-block group">
@@ -72,17 +72,14 @@ export default function RootLayout({
               </div>
               <ul className="flex flex-row md:flex-col gap-6 md:gap-4">
                 <li>
-                  <Link
-                    href="/"
-                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
-                  >
+                  <Link href="/" className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors">
                     about
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/projects"
-                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors"
                   >
                     projects
                   </Link>
@@ -90,7 +87,7 @@ export default function RootLayout({
                 <li>
                   <Link
                     href="/blog"
-                    className="text-[13px] font-medium text-slate-500 hover:text-black dark:text-slate-400 dark:hover:text-white transition-colors"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors"
                   >
                     blog
                   </Link>
@@ -108,7 +105,7 @@ export default function RootLayout({
                     href={EXTERNAL_LINKS.GITHUB}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
+                    className="text-slate-400 hover:text-black transition-all duration-200"
                     aria-label="GitHub"
                   >
                     <FaGithub size={18} />
@@ -117,7 +114,7 @@ export default function RootLayout({
                     href={EXTERNAL_LINKS.LINKEDIN}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-black dark:text-slate-500 dark:hover:text-white transition-all duration-200"
+                    className="text-slate-400 hover:text-black transition-all duration-200"
                     aria-label="LinkedIn"
                   >
                     <FaLinkedinIn size={18} />

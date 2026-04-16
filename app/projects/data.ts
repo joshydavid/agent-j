@@ -17,7 +17,7 @@ export const projects: Project[] = [
       "visualisation dashboard: real-time sentiment indicators, p&l trends, and holdings.",
       "notification system: alerts for breaking news and trade execution confirmations.",
     ],
-    tags: [2026, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.SCHOOL_PROJECT],
+    tags: [2026, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.AI_AGENTS],
     gitHub: "https://github.com/SMU-IS/agentic-ai-trading-be",
     techStack: [
       TechStack.FAST_API,
@@ -57,7 +57,7 @@ export const projects: Project[] = [
       "redis caching to reduce database reads and cut api response time from 790ms to 50ms.",
       "large language models analysis of grind results to deliver tailored brewing advice.",
     ],
-    tags: [2025, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.PET_PROJECT],
+    tags: [2025, ProjectTag.SOFTWARE_ENGINEERING],
     gitHub: "https://github.com/joshydavid/brew-intelligence",
     techStack: [
       TechStack.JAVA,
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     description:
       "an innovative phygital initiative by the five community development councils (cdcs), in collaboration with government technology agency (govtech) to promote community engagement and an active lifestyle by blending brisk-walking with digital gamification.",
     features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH_PROJECT],
+    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH],
     techStack: [
       TechStack.TYPESCRIPT,
       TechStack.KOA_JS,
@@ -103,7 +103,7 @@ export const projects: Project[] = [
     description:
       "problem statement - how might we improve this method of identifying healthier purchases so that hpb can reward individuals for making healthier choice purchases, regardless of where they shop?",
     features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH_PROJECT, ProjectTag.HACKATHON],
+    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH, ProjectTag.HACKATHON],
     techStack: [
       TechStack.TYPESCRIPT,
       TechStack.NEXT_JS,
@@ -124,7 +124,7 @@ export const projects: Project[] = [
     description:
       "one of the greenfield govtech internship projects i've worked on, sparks is a product recommender app that helps government agency users discover a suite of products built in-house.",
     features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH_PROJECT],
+    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH],
     techStack: [
       TechStack.TYPESCRIPT,
       TechStack.NEXT_JS,

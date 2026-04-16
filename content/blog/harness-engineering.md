@@ -1,8 +1,8 @@
 ---
-title: "hello world"
+title: "ai agents"
 date: "2026-04-15"
 description: "harness engineering for agentic ai systems"
-tags: ["general"]
+tags: ["ai-agents", "harness-engineering"]
 ---
 
 ## harness engineering for agentic ai systems

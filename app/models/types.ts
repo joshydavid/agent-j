@@ -1,10 +1,9 @@
 export enum ProjectTag {
   SOFTWARE_ENGINEERING = "software-engineering",
-  GOVTECH_PROJECT = "govtech-project",
+  AI_AGENTS = "ai-agents",
+  GOVTECH = "govtech",
   HACKATHON = "hackathon",
-  PET_PROJECT = "pet-project",
   WORK_IN_PROGRESS = "work-in-progress",
-  SCHOOL_PROJECT = "school-project",
 }
 
 export enum DeploymentStatus {
