@@ -11,12 +11,12 @@ export default function Home() {
       <section className="mb-12">
         <h2 className="mb-4 text-sm font-bold tracking-widest uppercase text-black">about</h2>
         <div className="space-y-4 text-[15px] leading-relaxed text-slate-600 max-w-2xl">
-          <p>i'm a software engineer, building at the intersection of cloud-native infrastructure and agentic ai.</p>
+          <p>i'm a software engineer building at the intersection of cloud-native infrastructure and agentic ai.</p>
           <p>
             recently i’ve been diving into stateful multi-agent systems and the underlying automation that keeps them
             reliable.
           </p>
-          <p>away from the terminal, i'm usually brewing a cup of espresso or at the gym.</p>
+          <p>away from the terminal, i'm usually brewing a shot of espresso or at the gym.</p>
         </div>
       </section>
 

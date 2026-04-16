@@ -85,6 +85,4 @@ export interface Experience {
   company: string;
   position: string;
   timeline: string;
-  icon: string;
-  isCompleted: boolean;
 }
