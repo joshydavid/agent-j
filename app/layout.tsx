@@ -53,7 +53,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white p-4 no-scrollbar">
+      <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white md:p-4 no-scrollbar">
         <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
           {/* Sidebar / Navigation */}
           <div className="w-full md:w-64 md:border-r md:border-slate-100 shrink-0">

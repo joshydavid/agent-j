@@ -18,7 +18,7 @@ _(Coined by Mitchell Hashimoto in early 2026)_
 ## orchestrator vs. harness
 it is critical to distinguish between these two layers:
 - the orchestrator is probabilistic. it manages the cyclic graph, deciding which node to visit next based on llm reasoning.
-- the harness is deterministic. it sits at the edge of every node, verifying that an agent’s "thought" doesn't violate security protocols, budget limits, or schema requirements before it touches the real world.
+- the harness is deterministic. it sits at the edge of every node, verifying that an agent’s thought doesn't violate security protocols, budget limits, or schema requirements before it touches the real world.
 
 ## deterministic verification loops
 agents are inherently non-deterministic, yet enterprise systems demand predictable outcomes. to bridge this gap, every agentic action must pass through a validator or judge node. by implementing these loops, the harness can programmatically inspect outputs against strict schemas or security protocols. once a check fails, the harness decides the next move, whether that is triggering an automated retry with fresh constraints or escalating to a human-in-the-loop intervention.
@@ -27,7 +27,7 @@ agents are inherently non-deterministic, yet enterprise systems demand predictab
 granting an agent the power to execute code or call apis introduces a critical security surface. a robust harness must provide a zero-trust execution environment. by leveraging cloud-native infrastructure like kubernetes, we can spin up ephemeral, isolated containers to serve as sandboxes for tool execution. once the task is complete, the environment is immediately destroyed, ensuring there are no persistent side effects, unauthorized state changes, or security leaks.
 
 ## state management via stateful graphs
-linear chains are far too brittle for complex reasoning because if one link breaks, the entire process collapses. instead, agentic workflows should be modeled as stateful graphs. utilizing frameworks like langgraph allows the harness to manage cycles and persistent state. this architecture ensures resilience and if an agent enters a logic loop or fails mid-process, the harness can "rewind" the state to a known good checkpoint or pivot to a different branch of logic rather than allowing the system to crash.
+linear chains are far too brittle for complex reasoning because if one link breaks, the entire process collapses. instead, agentic workflows should be modeled as stateful graphs. utilizing frameworks like langgraph allows the harness to manage cycles and persistent state. this architecture ensures resilience and if an agent enters a logic loop or fails mid-process, the harness can rewind the state to a known good checkpoint or pivot to a different branch of logic rather than allowing the system to crash.
 
 ## credits / more info
 - https://openai.com/index/harness-engineering
