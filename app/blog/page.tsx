@@ -9,7 +9,7 @@ export default function BlogPage() {
     <div className="animate-fade-in">
       <section className="mb-16 border-b border-slate-200 pb-12">
         <h1 className="text-4xl font-bold tracking-tight text-black">blog</h1>
-        <p className="mt-2 text-lg leading-7 text-slate-600">sharing my thoughts and learnings</p>
+        <p className="mt-2 text-lg leading-7 text-slate-600">sharing my learnings</p>
       </section>
 
       <section>
