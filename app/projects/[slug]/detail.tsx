@@ -75,7 +75,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           {(project.deployedLink || project.gitHub) && (
             <section className="my-8">
               <h2 className="text-2xl font-semibold text-black">links</h2>
-              <ul className="mt-4 flex flex-col">
+              <ul className="mt-4 not-prose flex flex-col">
                 {project.deployedLink && (
                   <li>
                     <a
