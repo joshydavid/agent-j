@@ -1,10 +1,10 @@
+import { EXTERNAL_LINKS } from "@/app/constants/links";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-
-import { EXTERNAL_LINKS } from "@/app/constants/links";
 
 import "./globals.css";
 
@@ -124,6 +124,7 @@ export default function RootLayout({
             </main>
           </div>
         </div>
+        <Analytics />
       </body>
     </html>
   );

@@ -12,6 +12,7 @@
     "harness": "bun run lint && bun run check:types && bun run check:git"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "gray-matter": "^4.0.3",
     "next": "16.2.1-canary.42",
     "react": "19.2.5",
