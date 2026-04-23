@@ -12,10 +12,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     return (
       <div className="animate-fade-in">
         <nav className="mb-8">
-          <Link
-            href="/blog"
-            className="text-sm font-medium text-black hover:text-slate-600"
-          >
+          <Link href="/blog" className="text-sm font-medium text-black hover:text-slate-600">
             ← back to blog
           </Link>
         </nav>
@@ -27,36 +24,26 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="animate-fade-in">
       <nav className="mb-8">
-        <Link
-          href="/blog"
-          className="text-sm font-medium text-black hover:text-slate-600"
-        >
+        <Link href="/blog" className="text-sm font-medium text-black hover:text-slate-600">
           ← back to blog
         </Link>
       </nav>
 
       <article>
         <header className="mb-12 border-b border-slate-200 pb-12">
-          <time className="block mb-4 text-xs font-mono text-slate-500">
-            {post.date}
-          </time>
+          <time className="block mb-4 text-xs font-mono text-slate-500">{post.date}</time>
           <h1 className="text-4xl font-bold tracking-tight text-black">{post.title}</h1>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-3">
             {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600"
-              >
-                {tag}
+              <span key={tag} className="text-[11px] font-mono text-slate-400">
+                #{tag}
               </span>
             ))}
           </div>
         </header>
 
         <div className="prose prose-slate max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {post.content}
-          </ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </div>
       </article>
     </div>

@@ -29,15 +29,12 @@ export default function ProjectsPage() {
                 </Link>
               </div>
               <p className="mt-3 text-base leading-7 text-slate-600">{project.description}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4 flex flex-wrap gap-3">
                 {project.tags
                   .filter((t) => typeof t !== "number")
                   .map((tag) => (
-                    <span
-                      key={`${tag}`}
-                      className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600"
-                    >
-                      {typeof tag === "string" ? tag.replace(/-/g, " ") : tag}
+                    <span key={`${tag}`} className="text-[11px] font-mono text-slate-400">
+                      #{tag}
                     </span>
                   ))}
               </div>

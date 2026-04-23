@@ -33,15 +33,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.tags.find((t) => typeof t === "number")}
           </time>
           <h1 className="text-4xl font-bold tracking-tight text-black">{project.name}</h1>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-3">
             {project.tags
               .filter((t) => typeof t !== "number")
               .map((tag) => (
-                <span
-                  key={`${tag}`}
-                  className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600"
-                >
-                  {typeof tag === "number" ? tag : tag.replace(/-/g, " ")}
+                <span key={`${tag}`} className="text-[11px] font-mono text-slate-400">
+                  #{tag}
                 </span>
               ))}
           </div>

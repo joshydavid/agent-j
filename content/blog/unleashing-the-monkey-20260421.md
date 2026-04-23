@@ -2,17 +2,7 @@
 title: "unleashing the monkey"
 date: "2026-04-21"
 description: "moving from reactive monitoring to proactive resilience, inspired by netflix's chaos engineering"
-tags:
-  [
-    "litmus-chaos",
-    "chaos-engineering",
-    "fault-injection",
-    "site-reliability",
-    "kubernetes",
-    "infrastructure",
-    "devops",
-    "karpenter",
-  ]
+tags: ["litmus-chaos", "chaos-engineering", "site-reliability", "kubernetes", "infrastructure", "devops", "karpenter"]
 ---
 
 ## the philosophy: anti-fragility

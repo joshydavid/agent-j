@@ -1,6 +1,6 @@
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import path from "path";
 
 import { BlogPost } from "@/app/models/types";
 
@@ -52,4 +52,13 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
     content,
     tags: data.tags || [],
   } as BlogPost;
+}
+
+export function getUniqueTags(): string[] {
+  const posts = getBlogPosts();
+  const tags = new Set<string>();
+  posts.forEach((post) => {
+    post.tags.forEach((tag) => tags.add(tag));
+  });
+  return Array.from(tags).sort();
 }
