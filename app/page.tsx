@@ -5,16 +5,18 @@ export default function Home() {
     <div className="animate-fade-in">
       <section className="mb-12">
         <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">joshua</h1>
-        <p className="text-lg leading-7 text-slate-600 max-w-2xl">software engineer, dell technologies</p>
+        <p className="text-lg leading-7 text-slate-600 max-w-2xl">software engineer intern, cpf board</p>
       </section>
 
       <section className="mb-12">
         <h2 className="mb-4 text-sm font-bold tracking-widest uppercase text-black">about</h2>
         <div className="space-y-4 text-[15px] leading-relaxed text-slate-600 max-w-2xl">
-          <p>i&apos;m a software engineer building at the intersection of cloud-native infrastructure and agentic ai.</p>
           <p>
-            recently i&rsquo;ve been diving into stateful multi-agent systems and the underlying automation that keeps them
-            reliable.
+            i&apos;m a software engineer building at the intersection of cloud-native infrastructure and agentic ai.
+          </p>
+          <p>
+            recently i&rsquo;ve been diving into stateful multi-agent systems and the underlying automation that keeps
+            them reliable.
           </p>
           <p>away from the terminal, i&apos;m usually brewing a shot of espresso or at the gym.</p>
         </div>
