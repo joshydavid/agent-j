@@ -6,7 +6,13 @@ import { BlogPost } from "@/app/models/types";
 
 const blogDirectory = path.join(process.cwd(), "content/blog");
 
+let postsCache: BlogPost[] | null = null;
+
 export function getBlogPosts(): BlogPost[] {
+  if (postsCache) {
+    return postsCache;
+  }
+
   if (!fs.existsSync(blogDirectory)) {
     return [];
   }
@@ -31,27 +37,13 @@ export function getBlogPosts(): BlogPost[] {
       } as BlogPost;
     });
 
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  postsCache = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return postsCache;
 }
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  const fullPath = path.join(blogDirectory, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) {
-    return undefined;
-  }
-
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return {
-    id: data.id || 0,
-    title: data.title,
-    slug,
-    date: data.date,
-    description: data.description,
-    content,
-    tags: data.tags || [],
-  } as BlogPost;
+  const posts = getBlogPosts();
+  return posts.find((p) => p.slug === slug);
 }
 
 export function getUniqueTags(): string[] {
