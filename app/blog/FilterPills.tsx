@@ -59,7 +59,7 @@ export default function FilterPills({ tags, activeTags }: FilterPillsProps) {
 
   return (
     <div className="mb-16 space-y-1">
-      <div className="flex items-center justify-end h-4">
+      <div className="flex items-center justify-end h-4 mb-4 md:mb-0">
         {activeTags.length > 0 && (
           <button
             onClick={clearFilters}
