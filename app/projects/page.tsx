@@ -17,6 +17,13 @@ export default function ProjectsPage() {
               key={project.slug}
               className="group border-b border-slate-200 pb-12 transition-colors last:border-0 hover:border-slate-300"
             >
+              {project.awards && project.awards.length > 0 && (
+                <div className="mb-4 flex text-[11px] items-center gap-2">
+                  <span className="animate-pulse">🏆</span>
+                  <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
+                </div>
+              )}
+
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 <time className="block text-xs font-mono text-slate-500">
                   {project.tags.find((t) => typeof t === "number")}
@@ -28,6 +35,7 @@ export default function ProjectsPage() {
                   {project.name}
                 </Link>
               </div>
+
               <p className="mt-3 text-base leading-7 text-slate-600">{project.description}</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {project.tags

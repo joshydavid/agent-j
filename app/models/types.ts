@@ -55,6 +55,7 @@ export interface Project {
   deployedLink?: string;
   gitHub?: string;
   isMobile?: boolean;
+  awards?: string[];
 }
 
 export interface BlogPost {

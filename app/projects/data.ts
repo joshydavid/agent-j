@@ -40,6 +40,7 @@ export const projects: Project[] = [
     ],
     deploymentStatus: DeploymentStatus.DEPLOYED,
     deployedLink: "https://agentic-m.com",
+    awards: ["Dell Technologies (Cloud Native Award) Champion"],
   },
   {
     id: 9,

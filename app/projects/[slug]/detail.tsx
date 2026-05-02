@@ -29,6 +29,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
       <article>
         <header className="mb-12 border-b border-slate-200 pb-12">
+          {project.awards && project.awards.length > 0 && (
+            <div className="mb-8 flex text-[11px] items-center gap-2">
+              <span className="animate-pulse">🏆</span>
+              <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
+            </div>
+          )}
+
           <time className="block mb-4 text-xs font-mono text-slate-500">
             {project.tags.find((t) => typeof t === "number")}
           </time>
