@@ -7,16 +7,18 @@ tags: ["system-design", "mcp", "agentic-ai", "aws-summit-2026"]
 
 for the past few years, llms have always been brains in a jar, capable of conversation but disconnected from action. we are now moving past the chatbot era and into the age of agentic ai where the focus has shifted from how a model talks to how it performs.
 
-## core fundamentals of the react loop: reason, act, remember
+## core fundamentals of the react (reasoning + acting) loop
 
 true autonomy requires more than just a single prompt. it requires a feedback loop and the foundation of any agentic system is the ReAct loop.
 
-the process is cyclical:
+the loop follows a four-stage process:
 
-1. `reason`: the llm interprets the user intent and formulates a step-by-step plan.
-2. `act`: the agent executes a specific tool (e.g., fetching a database record or calculating risk).
-3. `remember`: the results are stored in the agent's memory - both short-term (current session state) and long-term (user profiles and episodic history).
-4. this loop allows for self-correction. if a tool returns an error, the agent doesn't crash but it reasons about the failure and acts again with a different approach.
+1. `thought (reasoning)`: the llm interprets the user intent and formulates a step-by-step plan.
+2. `action`: the agent selects and executes a specific tool (e.g., fetching a database record or calculating risk).
+3. `observation`: the agent receives the output from the tool and adds it to its conversation history as new context.
+4. `repeat`: the agent looks at the updated history and decides whether it has enough contrxt to provide a final andwer.
+
+this loop allows for self-correction. if a tool returns an error, the agent doesn't crash but it reasons about the failure and acts again with a different approach.
 
 ## evolution of the user experience
 
