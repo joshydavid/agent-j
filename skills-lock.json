@@ -7,6 +7,12 @@
       "skillPath": "skills/frontend-design/SKILL.md",
       "computedHash": "063a0e6448123cd359ad0044cc46b0e490cc7964d45ef4bb9fd842bd2ffbca67"
     },
+    "markdown-to-epub-converter": {
+      "source": "smerchek/claude-epub-skill",
+      "sourceType": "github",
+      "skillPath": "markdown-to-epub/SKILL.md",
+      "computedHash": "dd2aa7897635371d8ddcc85299f003e2f64d4914fc02b8f76c3e1699f01fa727"
+    },
     "vercel-react-best-practices": {
       "source": "vercel-labs/agent-skills",
       "sourceType": "github",
