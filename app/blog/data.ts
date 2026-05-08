@@ -26,11 +26,23 @@ export function getBlogPosts(): BlogPost[] {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
+      const stats = fs.statSync(fullPath);
+
+      let postDate = data.date;
+      if (!postDate) {
+        const dateMatch = slug.match(/(\d{4})(\d{2})(\d{2})$/);
+        if (dateMatch) {
+          postDate = `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+        } else {
+          postDate = stats.birthtime.toISOString().split("T")[0];
+        }
+      }
+
       return {
         id: data.id || 0,
         title: data.title,
         slug,
-        date: data.date,
+        date: postDate,
         description: data.description,
         content,
         tags: data.tags || [],

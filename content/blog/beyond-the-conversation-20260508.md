@@ -5,7 +5,7 @@ description: "how the model context protocol and react loops are defining the ne
 tags: ["system-design", "mcp", "agentic-ai", "aws-summit-2026"]
 ---
 
-for the past few years, llms have always been brains in a jar, capable of conversation but disconnected from action. we are now moving past the chatbot era and into the age of agentic ai where the focus has shifted from how a model talks to how it performs.
+for the past few years, llms have always been brains in a jar, capable of conversation but disconnected from action. we're now moving past the chatbot era and into the age of agentic ai where the focus has shifted from how a model talks to how it performs.
 
 ## core fundamentals of the react (reasoning + acting) loop
 

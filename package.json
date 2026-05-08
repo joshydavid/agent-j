@@ -9,6 +9,7 @@
     "lint": "eslint",
     "check:types": "tsc --noEmit",
     "check:git": "bun scripts/check-git.ts",
+    "new:blog": "bun scripts/new-post.ts",
     "harness": "bun run lint && bun run check:types && bun run check:git"
   },
   "dependencies": {
