@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "next-devtools": {
+      "command": "bunx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
+    "github": {
+      "command": "bunx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "$GITHUB_PERSONAL_ACCESS_TOKEN"
+      }
+    }
+  }
+}
