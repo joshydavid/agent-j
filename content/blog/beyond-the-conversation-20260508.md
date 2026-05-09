@@ -16,7 +16,7 @@ the loop follows a four-stage process:
 1. `thought (reasoning)`: the llm interprets the user intent and formulates a step-by-step plan.
 2. `action`: the agent selects and executes a specific tool (e.g., fetching a database record or calculating risk).
 3. `observation`: the agent receives the output from the tool and adds it to its conversation history as new context.
-4. `repeat`: the agent looks at the updated history and decides whether it has enough contrxt to provide a final andwer.
+4. `repeat`: the agent looks at the updated history and decides whether it has enough context to provide a final answer.
 
 this loop allows for self-correction. if a tool returns an error, the agent doesn't crash but it reasons about the failure and acts again with a different approach.
 
@@ -24,28 +24,28 @@ this loop allows for self-correction. if a tool returns an error, the agent does
 
 the transition from traditional web applications to agentic ai represents a massive shift in how users interact with data
 
-traditional app experience
+_traditional app experience_
 
-- a user interacts with a website. the website calls specific apis, which pull from fixed data stores. this is a linear, rigid path where the user must navigate the interface to find what they need.
+- a user interacts with a website and the website calls specific apis, which pull from fixed data stores. this is a linear, rigid path where the user must navigate the interface to find what they need.
 
-agentic ai app experience
+_agentic ai app experience_
 
-- a user interacts with an ai assistant. this assistant doesn't just call a pre-defined api; it uses tools via mcp (model context protocol) to browse semantic apis and reference data dynamically. it can bridge the gap between natural language intent and backend system execution autonomously.
+- a user interacts with an ai assistant and this assistant doesn't just call a pre-defined api; it uses tools via mcp (model context protocol) to browse semantic apis and reference data dynamically. it can bridge the gap between natural language intent and backend system execution autonomously.
 
 ## putting theory into practice
 
 the react loop is the engine of an ai agent. using an insurance quote as an example, the process follows a recursive cycle:
 
-1. input: user says, "i need a car insurance."
-2. state management: the agent retrieves the system prompt and current context.
-3. reasoning: the agent determines it needs driver details.
-4. action: it invokes a tool: get_driver_details(user).
-5. observation: it receives data, updates its state, and realises it now needs vehicle and risk data.
-6. loop: this continues until all variables (driver + cars + risk) are gathered to generate a final quote response.
+1. `input`: user says, "i need a car insurance."
+2. `state management`: the agent retrieves the system prompt and current context.
+3. `reasoning`: the agent determines it needs driver details.
+4. `action`: it invokes a tool: `get_driver_details(user)`.
+5. `observation`: it receives data, updates its state, and realises it now needs vehicle and risk data.
+6. `loop`: this continues until all variables (driver + cars + risk) are gathered to generate a final quote response.
 
 ## mcp: the universal connector
 
-one of the biggest bottlenecks in agentic design has been the "n+1" problem: every time you add a new data store (sql, nosql, external apis), you have to write a custom tool for the agent.
+one of the biggest bottlenecks in agentic design has been the n+1 problem: every time you add a new data store (sql, nosql, external apis), you have to write a custom tool for the agent.
 
 the model context protocol (mcp) solves this by acting as the usb-c for ai. instead of building bespoke integrations, engineers can now use a standardised protocol to connect agents (mcp clients) to data sources (mcp servers). by standardising these interactions, the harness remains decoupled from the specific database implementation, allowing agents to navigate complex enterprise data environments using a single, unified interface.
 
@@ -54,7 +54,7 @@ the model context protocol (mcp) solves this by acting as the usb-c for ai. inst
 an agent without memory is just a function. to move toward long-term autonomy, the harness must manage a complex memory stack:
 
 - `short-term memory`: manages the scratchpad and the current action plan. this is often framework-dependent and sits in the backend data store.
-- `long-term memory`: involves semantic retrieval from vector stoares and episodic memory (learning from historical interactions via reinforcement learning).
+- `long-term memory`: involves semantic retrieval from vector stores and episodic memory (learning from historical interactions via reinforcement learning).
 - `system prompts`: the version-controlled instructions that define the agent's persona and operational boundaries.
 
 ## validation is the new unit test
