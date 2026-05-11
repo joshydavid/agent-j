@@ -2,7 +2,7 @@
 title: "beyond the conversation"
 date: "2026-05-08"
 description: "how the model context protocol and react loops are defining the next generation of agentic infrastructure"
-tags: ["system-design", "mcp", "agentic-ai", "aws-summit-2026"]
+tags: ["system-design", "mcp", "ai-agents", "aws-summit-2026"]
 ---
 
 for the past few years, llms have always been brains in a jar, capable of conversation but disconnected from action. we're now moving past the chatbot era and into the age of agentic ai where the focus has shifted from how a model talks to how it performs.
