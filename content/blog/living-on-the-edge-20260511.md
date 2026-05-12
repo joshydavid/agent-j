@@ -1,7 +1,7 @@
 ---
 title: "living on the edge"
 date: "2026-05-11"
-description: "why the future of infrastructure isn't just in the clouds but it's at the perimeter"
+description: "why the future of infrastructure isn't just in the cloud but at the perimeter"
 tags: ["edge-computing", "dell-native-edge", "infrastructure"]
 ---
 
@@ -38,7 +38,7 @@ the workflow of an edge-enabled system usually follows this path:
 
 ## simplifying edge operations at scale
 
-managing one edge device is easy. managing 10,000 devices spread across retail stores, factories, and cell towers is a nightmare. this is where **Dell NativeEdge** comes in.
+managing one edge device is easy. managing 10,000 devices spread across retail stores, factories, and cell towers is a nightmare. this is where [Dell NativeEdge](https://www.dell.com/en-sg/shop/storage-servers-and-networking-for-business/sf/nativeedge) comes in.
 
 NativeEdge is an edge operations software platform designed to simplify and secure edge deployments at scale. it acts as the connective tissue between your hardware and your applications.
 
