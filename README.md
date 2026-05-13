@@ -1,28 +1,36 @@
-# Agent J
+# Agent J 🤖
 
-A minimalist, high-performance web application built with the latest Next.js and React primitives.
+**Agent J** is a high-performance, agent-driven portfolio and development environment built at the intersection of cloud-native infrastructure and agentic AI. It serves as both a personal showcase and a rigorous testing ground for autonomous engineering workflows.
 
-## 🚀 Tech Stack
+## ⚡ Core Philosophy
 
+- **Agent-First Maintenance**: The codebase is primarily managed by specialized AI personas following strict architectural invariants.
+- **Bleeding Edge**: Built with the latest primitives from the Next.js and React ecosystems.
+- **Radical Transparency**: Every decision, from architectural patterns to commit messages, is governed by explicit guidelines in `docs/arch/` and `.agents/skills/`.
+
+## 🛠️ Tech Stack
+
+- **Runtime**: [Bun](https://bun.sh/) (Fastest package manager & bundler)
 - **Framework**: [Next.js 16 (Canary)](https://nextjs.org/)
 - **Library**: [React 19](https://react.dev/)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Runtime & Package Manager**: [Bun](https://bun.sh/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Content**: [React Markdown](https://github.com/remarkjs/react-markdown) & [Gray Matter](https://github.com/jonschlinkert/gray-matter)
+- **Infrastructure**: Vercel (Analytics & Speed Insights)
+- **Content**: Markdown-driven blog with Gray Matter
 
-## 🤖 The Agent
+## 🤖 Agent Intelligence
 
-This project is maintained by a **Senior Product Engineer** agent persona. The agent follows a strict architectural philosophy:
-- **Minimalist & Direct**: Focused on clean, performant code without corporate bloat.
-- **Quality Gates**: Every change is validated against structural invariants, linting, and type safety.
-- **Decentralized Documentation**: Detailed architectural guidelines are found in `docs/arch/`.
+The repository includes a comprehensive library of **25+ specialized agent skills** located in `.agents/skills/`. These skills enable autonomous agents to handle complex engineering tasks with senior-level rigor:
 
-## 🛠️ Getting Started
+- **Architecture**: `spec-driven-development`, `api-and-interface-design`, `documentation-and-adrs`
+- **Execution**: `incremental-implementation`, `test-driven-development`, `context-engineering`
+- **Validation**: `code-review-and-quality`, `browser-testing-with-devtools`, `security-and-hardening`
+- **Delivery**: `git-workflow-and-versioning`, `ci-cd-and-automation`, `shipping-and-launch`
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-Ensure you have [Bun](https://bun.sh/) installed on your machine.
+Ensure you have [Bun](https://bun.sh/) installed.
 
 ### Installation
 
@@ -36,23 +44,28 @@ bun install
 bun dev
 ```
 
-### Production
+### Quality Control
 
-```bash
-bun run build
-bun start
-```
+The project uses a "Harness" to maintain high standards. Run this before any major change:
 
-## 🤝 Contribution
-
-We welcome contributions! To maintain the integrity of the project, please follow these guidelines:
-
-### Quality Gates
-Before submitting a Pull Request, ensure all quality gates pass:
 ```bash
 bun run harness
 ```
-This script executes:
-1. `eslint` (Style compliance)
-2. `tsc` (Type checking)
-3. `check-git` (Conventional commit verification)
+
+This triggers:
+
+1. `eslint` — Style and static analysis
+2. `tsc` — Strict type safety check
+3. `check-git` — Conventional commit verification
+
+## 📁 Structure
+
+- `app/`: Next.js App Router (React 19 components)
+- `content/`: Markdown sources for the blog
+- `.agents/skills/`: Executable instructions for AI agents
+- `docs/arch/`: Project invariants and architectural rules
+- `scripts/`: Custom automation for the development lifecycle
+
+## 🌟 Contact
+
+- **LinkedIn**: [Joshua](https://www.linkedin.com/in/joshydavid/)
