@@ -1,5 +1,6 @@
 # Agent J 🤖
 
+[![SafeSkill 93/100](https://img.shields.io/badge/SafeSkill-93%2F100_Verified%20Safe-brightgreen)](https://safeskill.dev/scan/joshydavid-agent-j)
 **Agent J** is a high-performance, agent-driven portfolio and development environment built at the intersection of cloud-native infrastructure and agentic AI. It serves as both a personal showcase and a rigorous testing ground for autonomous engineering workflows.
 
 ## ⚡ Core Philosophy
