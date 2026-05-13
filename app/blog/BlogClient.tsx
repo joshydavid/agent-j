@@ -2,8 +2,9 @@
 
 import { BlogPost } from "@/app/models/types";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import { useMemo } from "react";
 import FilterPills from "./FilterPills";
 
 interface BlogClientProps {
@@ -12,6 +13,7 @@ interface BlogClientProps {
 }
 
 function BlogListContent({ allPosts, allTags }: BlogClientProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
 
   const params = new URLSearchParams(searchParams.toString());
@@ -26,12 +28,13 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
     }
   });
 
-
   const activeTags = Array.from(activeTagsSet);
 
-  const filteredPosts = allPosts.filter((post) => {
-    return activeTags.length === 0 || activeTags.some((t) => post.tags.includes(t));
-  });
+  const filteredPosts = useMemo(() => {
+    return allPosts.filter((post) => {
+      return activeTags.length === 0 || activeTags.some((t) => post.tags.includes(t));
+    });
+  }, [allPosts, activeTags]);
 
   return (
     <>
@@ -70,10 +73,9 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
             <p className="text-slate-600 font-medium">no blog posts found for the selected filters.</p>
             <button
               onClick={() => {
-                const params = new URLSearchParams(window.location.search);
-                params.forEach((_value, key) => params.delete(key));
-                window.history.replaceState(null, "", window.location.pathname);
-                window.location.reload();
+                const url = new URL(window.location.href);
+                url.search = "";
+                router.push(url.pathname, { scroll: false });
               }}
               className="mt-4 text-[13px] font-medium text-slate-500 hover:text-black underline underline-offset-4 decoration-slate-200"
             >

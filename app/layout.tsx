@@ -65,7 +65,7 @@ export default function RootLayout({
                     width={48}
                     height={48}
                     className="h-12 w-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-                    loading="eager"
+                    priority
                   />
                 </Link>
               </div>

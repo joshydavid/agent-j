@@ -1,32 +1,27 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { cache } from "react";
 
 import { BlogPost } from "@/app/models/types";
 
 const blogDirectory = path.join(process.cwd(), "content/blog");
 
-let postsCache: BlogPost[] | null = null;
-
-export function getBlogPosts(): BlogPost[] {
-  if (postsCache) {
-    return postsCache;
-  }
-
+export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
   if (!fs.existsSync(blogDirectory)) {
     return [];
   }
 
-  const fileNames = fs.readdirSync(blogDirectory);
-  const allPostsData = fileNames
+  const fileNames = await fs.promises.readdir(blogDirectory);
+  const postsPromises = fileNames
     .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => {
+    .map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(blogDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const fileContents = await fs.promises.readFile(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
-      const stats = fs.statSync(fullPath);
+      const stats = await fs.promises.stat(fullPath);
 
       let postDate = data.date;
       if (!postDate) {
@@ -49,20 +44,20 @@ export function getBlogPosts(): BlogPost[] {
       } as BlogPost;
     });
 
-  postsCache = allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
-  return postsCache;
-}
+  const allPostsData = await Promise.all(postsPromises);
+  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+});
 
-export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  const posts = getBlogPosts();
+export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | undefined> => {
+  const posts = await getBlogPosts();
   return posts.find((p) => p.slug === slug);
-}
+});
 
-export function getUniqueTags(): string[] {
-  const posts = getBlogPosts();
+export const getUniqueTags = cache(async (): Promise<string[]> => {
+  const posts = await getBlogPosts();
   const tags = new Set<string>();
   posts.forEach((post) => {
     post.tags.forEach((tag) => tags.add(tag));
   });
   return Array.from(tags).sort();
-}
+});

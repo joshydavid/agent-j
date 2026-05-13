@@ -2,8 +2,8 @@ import { getBlogPosts, getUniqueTags } from "@/app/blog/data";
 import BlogClient from "./BlogClient";
 
 export default async function BlogPage() {
-  const allPosts = getBlogPosts();
-  const allTags = getUniqueTags();
+  const allPosts = await getBlogPosts();
+  const allTags = await getUniqueTags();
 
   return (
     <div className="animate-fade-in">
