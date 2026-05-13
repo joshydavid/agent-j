@@ -66,6 +66,6 @@ This triggers:
 - `docs/arch/`: Project invariants and architectural rules
 - `scripts/`: Custom automation for the development lifecycle
 
-## 🌟 Contact
+## 🗳️ Developer
 
-- **LinkedIn**: [Joshua](https://www.linkedin.com/in/joshydavid/)
+<a href="https://www.linkedin.com/in/joshydavid/"><img src="https://github.com/user-attachments/assets/f9dd5867-724a-4dff-a2ad-61c81ea6e3b5" width="80" title="Joshua David"></a>&nbsp;
