@@ -76,7 +76,6 @@ This triggers:
 
 1. `eslint` — Style and static analysis
 2. `tsc` — Strict type safety check
-3. `check-git` — Conventional commit verification
 
 ## 📁 Structure
 
@@ -84,7 +83,6 @@ This triggers:
 - `content/`: Markdown sources for the blog
 - `.gemini/`: Gemini CLI configuration (skills, commands, hooks)
 - `docs/arch/`: Project invariants and architectural rules
-- `scripts/`: Custom automation for the development lifecycle
 
 ## 🗳️ Developer
 

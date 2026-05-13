@@ -52,7 +52,7 @@ This project uses Next.js 16+ with MANDATORY MCP integration.
 
 ## Quality Gate (MANDATORY before every commit)
 
-- **Single Command Check**: `bun run harness` (Runs Arch, Lint, Types, Git, and Build checks).
+- **Single Command Check**: `bun run harness` (Runs Lint, Types, and Build checks).
 
 ## Git Conventions
 

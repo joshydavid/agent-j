@@ -29,7 +29,7 @@ This file tracks coding patterns that are strictly forbidden. These patterns hav
 * **The Fix:** Sort imports alphabetically and group by category: 1. Next/React, 2. Dependencies, 3. Internal Aliases (`@/`).
 * **Reason:** Maintains scannability and prevents merge conflicts during autonomous refactors.
 
-## VI. State Neglect
-* **The Mistake:** Completing a task and committing without updating `active-tasks.json`.
-* **The Fix:** The very last action of every task must be a state update in the progress ledger.
-* **Reason:** Breaks session continuity and leads to instruction drift.
+## VI. Missing Documentation
+* **The Mistake:** Implementing a feature without updating the relevant `GEMINI.md` or architectural docs.
+* **The Fix:** Ensure all structural changes are reflected in the project's documentation.
+* **Reason:** Keeps the knowledge base current for both humans and agents.
