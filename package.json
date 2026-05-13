@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "check:arch": "bun scripts/arch-check.ts",
     "check:types": "tsc --noEmit",
     "check:git": "bun scripts/check-git.ts",
     "new:blog": "bun scripts/new-post.ts",
-    "harness": "bun run lint && bun run check:types && bun run check:git"
+    "harness": "bun run check:arch && bun run lint && bun run check:types && bun run check:git && bun run build"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

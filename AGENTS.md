@@ -52,11 +52,7 @@ This project uses Next.js 16+ with MANDATORY MCP integration.
 
 ## Quality Gate (MANDATORY before every commit)
 
-1.  **Arch Check**: `bun scripts/arch-check.ts` (Enforces structural invariants).
-2.  **Lint Check**: `bun x eslint . --fix` (Style compliance).
-3.  **Type Check**: `bun run check:types` (Next.js 16 async type and unused import verification).
-4.  **Build Check**: `bun run build` (Production validation).
-5.  **Git Check**: `bun scripts/check-git.ts` (Conventional commit verification).
+- **Single Command Check**: `bun run harness` (Runs Arch, Lint, Types, Git, and Build checks).
 
 ## Git Conventions
 

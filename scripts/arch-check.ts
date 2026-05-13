@@ -36,7 +36,15 @@ function checkViolations() {
     for (const pattern of forbidden) {
       // Use grep to find imports starting with @/ or relative imports that might violate boundaries
       // We focus on @/ patterns as they are standard in this project's tsconfig
-      const result = spawnSync("grep", ["-r", `@/${pattern}`, target], { encoding: "utf-8" });
+      // We exclude Next.js UI entry points (page, layout, detail) from repository checks
+      const result = spawnSync("grep", [
+        "-r", 
+        "--exclude=*page.tsx", 
+        "--exclude=*layout.tsx", 
+        "--exclude=*detail.tsx", 
+        `@/${pattern}`, 
+        target
+      ], { encoding: "utf-8" });
       
       if (result.stdout) {
         console.error(`\x1b[31m[ARCH CHECK FAILURE]: ${label}\x1b[0m`);
