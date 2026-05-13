@@ -2,10 +2,9 @@ import { writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const title = process.argv[2];
-const category = process.argv[3] || "engineering";
 
 if (!title) {
-  console.error("❌ please provide a title: bun run new:blog \"my new post\" [category]");
+  console.error("❌ please provide a title: bun run new:blog \"my new post\"");
   process.exit(1);
 }
 
@@ -43,7 +42,6 @@ title: "${title.toLowerCase()}"
 date: "${dateStr}"
 updatedAt: "${dateTimeStr}"
 description: "A short summary of what this post is about."
-category: "${category.toLowerCase()}"
 tags: []
 author: "Joshua David"
 ---
@@ -75,4 +73,3 @@ writeFileSync(fullPath, template);
 
 console.log(`✅ created new blog post: ${fileName}`);
 console.log(`📍 location: content/blog/${fileName}`);
-console.log(`🏷️  category: ${category}`);
