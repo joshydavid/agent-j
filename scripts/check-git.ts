@@ -30,7 +30,7 @@ const typePattern = types.join("|");
 // Invariant: type(optional scope): lowercase description, imperative, no period
 // Example: feat(ui): add new button
 // Example: fix: resolve crash in auth
-const gitRegex = new RegExp(`^(${typePattern})(\\([a-z0-9-]+\\))?: [a-z0-9\\s-]+(?<!\\.)$`);
+const gitRegex = new RegExp(`^(${typePattern})(\\([a-z0-9-]+\\))?: [a-z0-9\\s\\._/-]+(?<!\\.)$`);
 
 let hasError = false;
 
