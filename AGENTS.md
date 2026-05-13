@@ -32,7 +32,7 @@ This project uses Next.js 16+ with MANDATORY MCP integration.
 
 - **Visual Style**: Minimalist, modern, and developer-centric. Use subtle animations (e.g., Framer Motion) for page transitions.
 - **Project Showcases**: Use a structured layout for project entries including: Title, Tech Stack (icons preferred), Description, and GitHub/Live Demo links.
-- **Content Management**: 
+- **Content Management**:
   - Static blog content: `content/blog/*.md`
   - Portfolio data: `app/projects/data.ts` and `app/blog/data.ts`
 - **Performance**: Ensure high [Lighthouse scores](https://web.dev) by optimizing images and leveraging Next.js Font optimization. Use `nextjs_call` with `get_diagnostics` to verify performance.

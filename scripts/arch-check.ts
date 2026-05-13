@@ -1,5 +1,5 @@
 /**
- * mechanical enforcer: verifies structural invariant (Types -> Config -> Repo -> UI)
+ * mechanical enforcer: verifies structural invariant (Models -> Repositories -> UI)
  * dependencies can only flow one way.
  */
 import { spawnSync } from "child_process";
@@ -7,21 +7,35 @@ import { spawnSync } from "child_process";
 const VIOLATIONS = [
   {
     target: "app/models",
-    forbidden: ["app/projects", "app/components", "app/api"],
-    label: "Types cannot depend on Repository or UI"
+    forbidden: ["app/projects", "app/blog", "app/components", "app/api", "app/providers"],
+    label: "Models (Types) cannot depend on Repositories, UI, or API"
   },
   {
     target: "app/projects",
-    forbidden: ["app/components", "app/api"],
-    label: "Repository cannot depend on UI"
+    forbidden: ["app/components", "app/api", "app/providers", "app/blog"],
+    label: "Project Repository cannot depend on UI, API, or other Repositories"
+  },
+  {
+    target: "app/blog",
+    forbidden: ["app/components", "app/api", "app/providers", "app/projects"],
+    label: "Blog Repository cannot depend on UI, API, or other Repositories"
+  },
+  {
+    target: "app/constants",
+    forbidden: ["app/projects", "app/blog", "app/components", "app/api", "app/providers"],
+    label: "Constants cannot depend on Repositories, UI, or API"
   }
 ];
 
 function checkViolations() {
   let hasError = false;
 
+  console.log("\x1b[34m[ARCH CHECK]: verifying structural invariants...\x1b[0m");
+
   for (const { target, forbidden, label } of VIOLATIONS) {
     for (const pattern of forbidden) {
+      // Use grep to find imports starting with @/ or relative imports that might violate boundaries
+      // We focus on @/ patterns as they are standard in this project's tsconfig
       const result = spawnSync("grep", ["-r", `@/${pattern}`, target], { encoding: "utf-8" });
       
       if (result.stdout) {
