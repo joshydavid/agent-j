@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div className="animate-fade-in">
       <section className="mb-12">
-        <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">joshua</h1>
-        <p className="text-lg leading-7 text-slate-600 max-w-2xl">software engineer intern, cpf board</p>
+        <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">Joshua</h1>
+        <p className="text-lg leading-7 text-slate-600 max-w-2xl">Software Engineer Intern, CPF Board</p>
       </section>
 
       <section className="mb-12">
