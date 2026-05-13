@@ -18,24 +18,29 @@ export default function FilterPills({ tags, activeTags }: FilterPillsProps) {
   const toggleTag = useCallback(
     (tag: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      const mainTag = params.get("tag");
-      const otherActiveTags = Array.from(params.keys()).filter((k) => k !== "tag" && tags.includes(k));
+      const activeTags = new Set<string>();
 
-      if (mainTag === tag) {
-        params.delete("tag");
-        if (otherActiveTags.length > 0) {
-          const newMain = otherActiveTags[0];
-          params.delete(newMain);
-          params.set("tag", newMain);
-        }
-      } else if (otherActiveTags.includes(tag)) {
-        params.delete(tag);
+      const mainTag = params.get("tag");
+      if (mainTag) activeTags.add(mainTag);
+      for (const key of params.keys()) {
+        if (key !== "tag" && tags.includes(key)) activeTags.add(key);
+      }
+
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
       } else {
-        if (!mainTag) {
-          params.set("tag", tag);
-        } else {
-          params.set(tag, "");
-        }
+        activeTags.add(tag);
+      }
+
+      // Clear existing tag-related params
+      params.delete("tag");
+      tags.forEach((t) => params.delete(t));
+
+      // Re-add tags in the specific format: ?tag=first&second&third
+      const tagList = Array.from(activeTags);
+      if (tagList.length > 0) {
+        params.set("tag", tagList[0]);
+        tagList.slice(1).forEach((t) => params.set(t, ""));
       }
 
       return params.toString();

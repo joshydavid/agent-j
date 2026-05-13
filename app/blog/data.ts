@@ -55,9 +55,5 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
 
 export const getUniqueTags = cache(async (): Promise<string[]> => {
   const posts = await getBlogPosts();
-  const tags = new Set<string>();
-  posts.forEach((post) => {
-    post.tags.forEach((tag) => tags.add(tag));
-  });
-  return Array.from(tags).sort();
+  return Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
 });

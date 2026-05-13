@@ -15,19 +15,18 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const params = new URLSearchParams(searchParams.toString());
-  const mainTag = params.get("tag");
-  const activeTagsSet = new Set<string>();
+  const activeTags = useMemo(() => {
+    const tags = new Set<string>();
+    const mainTag = searchParams.get("tag");
+    if (mainTag) tags.add(mainTag);
 
-  if (mainTag) activeTagsSet.add(mainTag);
-
-  Object.keys(Object.fromEntries(params.entries())).forEach((key) => {
-    if (key !== "tag" && allTags.includes(key)) {
-      activeTagsSet.add(key);
+    for (const key of searchParams.keys()) {
+      if (key !== "tag" && allTags.includes(key)) {
+        tags.add(key);
+      }
     }
-  });
-
-  const activeTags = Array.from(activeTagsSet);
+    return Array.from(tags);
+  }, [searchParams, allTags]);
 
   const filteredPosts = useMemo(() => {
     return allPosts.filter((post) => {
@@ -71,11 +70,7 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
           <div className="py-12 text-center border border-dashed border-slate-200 rounded-lg">
             <p className="text-slate-600 font-medium">no blog posts found for the selected filters.</p>
             <button
-              onClick={() => {
-                const url = new URL(window.location.href);
-                url.search = "";
-                router.push(url.pathname, { scroll: false });
-              }}
+              onClick={() => router.replace(window.location.pathname, { scroll: false })}
               className="mt-4 text-[13px] font-medium text-slate-500 hover:text-black underline underline-offset-4 decoration-slate-200"
             >
               clear all filters
