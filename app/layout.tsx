@@ -52,13 +52,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="md:h-screen md:overflow-hidden flex items-center justify-center bg-white md:p-4 no-scrollbar">
-        <div className="flex flex-col md:flex-row w-full max-w-5xl md:h-[85vh]">
+      <body className="flex justify-center bg-white antialiased">
+        <div className="flex flex-col md:flex-row w-full max-w-5xl">
           {/* Sidebar / Navigation */}
-          <div className="w-full md:w-64 md:border-r md:border-slate-100 shrink-0">
-            <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16">
+          <header className="w-full md:w-64 md:border-r md:border-slate-100 shrink-0 md:sticky md:top-0 md:h-screen">
+            <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16 h-full flex flex-col">
               <div className="mb-2 md:mb-12">
-                <Link href="/" className="inline-block group">
+                <Link href="/" className="inline-block group rounded-full">
                   <Image
                     src={EXTERNAL_LINKS.PROFILE_PICTURE}
                     alt="Joshua"
@@ -71,14 +71,17 @@ export default function RootLayout({
               </div>
               <ul className="flex flex-row md:flex-col gap-6 md:gap-4">
                 <li>
-                  <Link href="/" className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors">
+                  <Link
+                    href="/"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+                  >
                     about
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/projects"
-                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                   >
                     projects
                   </Link>
@@ -86,25 +89,25 @@ export default function RootLayout({
                 <li>
                   <Link
                     href="/blog"
-                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors"
+                    className="text-[13px] font-medium text-slate-500 hover:text-black transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                   >
                     blog
                   </Link>
                 </li>
               </ul>
             </nav>
-          </div>
+          </header>
 
-          <div className="flex-1 md:overflow-y-auto no-scrollbar">
+          <div className="flex-1 min-w-0">
             <main className="max-w-3xl px-8 py-4 md:px-16 md:py-16">
               {children}
-              <footer className="mt-16 pt-4">
+              <footer className="mt-16 pt-4 border-t border-slate-50">
                 <div className="flex gap-4">
                   <a
                     href={EXTERNAL_LINKS.GITHUB}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-black transition-all duration-200"
+                    className="text-slate-400 hover:text-black transition-all duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                     aria-label="GitHub"
                   >
                     <FaGithub size={18} />
@@ -113,7 +116,7 @@ export default function RootLayout({
                     href={EXTERNAL_LINKS.LINKEDIN}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-black transition-all duration-200"
+                    className="text-slate-400 hover:text-black transition-all duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                     aria-label="LinkedIn"
                   >
                     <FaLinkedinIn size={18} />

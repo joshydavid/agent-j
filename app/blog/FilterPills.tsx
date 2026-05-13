@@ -68,7 +68,8 @@ export default function FilterPills({ tags, activeTags }: FilterPillsProps) {
           <button
             onClick={clearFilters}
             disabled={isPending}
-            className="flex items-center gap-1 cursor-pointer text-[11px] font-medium text-slate-400 hover:text-black active:opacity-50 transition-all underline underline-offset-4 decoration-slate-200 disabled:cursor-not-allowed"
+            aria-label="clear all filters"
+            className="flex items-center gap-1 cursor-pointer text-[11px] font-medium text-slate-400 hover:text-black focus-visible:text-black active:opacity-50 transition-all underline underline-offset-4 decoration-slate-200 disabled:cursor-not-allowed rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
           >
             <HiX className="w-3 h-3" />
             clear all
@@ -84,10 +85,11 @@ export default function FilterPills({ tags, activeTags }: FilterPillsProps) {
               key={tag}
               onClick={() => handleTagClick(tag)}
               disabled={isPending}
-              className={`group flex items-center gap-1.5 cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 active:scale-95 disabled:cursor-not-allowed ${
+              aria-pressed={isActive}
+              className={`group flex items-center gap-1.5 cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium transition-all duration-200 active:scale-95 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 ${
                 isActive
-                  ? "bg-slate-800 text-white shadow-md shadow-slate-200"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:shadow-sm"
+                  ? "bg-slate-900 text-white shadow-sm"
+                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900"
               }`}
             >
               {tag}

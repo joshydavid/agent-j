@@ -10,7 +10,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     return (
       <div className="animate-fade-in">
         <nav className="mb-8">
-          <Link href="/projects" className="text-sm font-medium text-black hover:text-slate-600">
+          <Link
+            href="/projects"
+            className="text-sm font-medium text-black hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
+          >
             ← back to projects
           </Link>
         </nav>
@@ -22,7 +25,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="animate-fade-in">
       <nav className="mb-8">
-        <Link href="/projects" className="text-sm font-medium text-black hover:text-slate-600">
+        <Link
+          href="/projects"
+          className="text-sm font-medium text-black hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
+        >
           ← back to projects
         </Link>
       </nav>
@@ -31,7 +37,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <header className="mb-12 border-b border-slate-200 pb-12">
           {project.awards && project.awards.length > 0 && (
             <div className="mb-8 flex text-[11px] items-center gap-2">
-              <span className="animate-pulse">🏆</span>
+              <span role="img" aria-label="award">🏆</span>
               <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
             </div>
           )}
@@ -86,7 +92,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       href={project.deployedLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-black hover:underline"
+                      className="inline-flex items-center text-sm font-medium text-black hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                     >
                       view project →
                     </a>
@@ -98,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       href={project.gitHub}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-black hover:underline"
+                      className="inline-flex items-center text-sm font-medium text-black hover:underline rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                     >
                       source code →
                     </a>

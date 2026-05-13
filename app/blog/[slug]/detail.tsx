@@ -12,7 +12,10 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     return (
       <div className="animate-fade-in">
         <nav className="mb-8">
-          <Link href="/blog" className="text-sm font-medium text-black hover:text-slate-600">
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-black hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
+          >
             ← back to blog
           </Link>
         </nav>
@@ -24,7 +27,10 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="animate-fade-in">
       <nav className="mb-8">
-        <Link href="/blog" className="text-sm font-medium text-black hover:text-slate-600">
+        <Link
+          href="/blog"
+          className="text-sm font-medium text-black hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
+        >
           ← back to blog
         </Link>
       </nav>

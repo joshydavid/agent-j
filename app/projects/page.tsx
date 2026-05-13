@@ -19,7 +19,7 @@ export default function ProjectsPage() {
             >
               {project.awards && project.awards.length > 0 && (
                 <div className="mb-4 flex text-[11px] items-center gap-2">
-                  <span className="animate-pulse">🏆</span>
+                  <span role="img" aria-label="award">🏆</span>
                   <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
                 </div>
               )}
@@ -30,7 +30,7 @@ export default function ProjectsPage() {
                 </time>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="text-2xl font-semibold text-black transition-colors hover:text-slate-600"
+                  className="text-2xl font-semibold text-black transition-colors hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
                 >
                   {project.name}
                 </Link>
