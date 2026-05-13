@@ -23,7 +23,6 @@ if (!fullCommitMsg) {
 
 const lines = fullCommitMsg.split("\n");
 const header = lines[0].trim();
-const body = lines.slice(1).join("\n").trim();
 
 const types = ["feat", "fix", "docs", "style", "refactor", "chore", "perf", "test", "build", "ci"];
 const typePattern = types.join("|");

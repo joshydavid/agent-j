@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { getBlogPostBySlug } from "@/app/blog/data";
+import ScrollToTop from "@/app/components/ScrollToTop";
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -26,6 +27,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
   return (
     <div className="animate-fade-in">
+      <ScrollToTop />
       <nav className="mb-8">
         <Link
           href="/blog"

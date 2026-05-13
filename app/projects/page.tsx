@@ -1,10 +1,12 @@
 import Link from "next/link";
 
 import { projects } from "@/app/projects/data";
+import ScrollToTop from "@/app/components/ScrollToTop";
 
 export default function ProjectsPage() {
   return (
     <div className="animate-fade-in">
+      <ScrollToTop />
       <section className="mb-12 border-b border-slate-200 pb-8">
         <h1 className="text-4xl font-bold tracking-tight text-black">projects</h1>
         <p className="mt-2 text-lg leading-7 text-slate-600">work i&apos;ve done over the years</p>

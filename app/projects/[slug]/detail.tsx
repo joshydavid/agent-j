@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { projects } from "@/app/projects/data";
+import ScrollToTop from "@/app/components/ScrollToTop";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -24,6 +25,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   return (
     <div className="animate-fade-in">
+      <ScrollToTop />
       <nav className="mb-8">
         <Link
           href="/projects"

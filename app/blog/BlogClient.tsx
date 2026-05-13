@@ -3,8 +3,7 @@
 import { BlogPost } from "@/app/models/types";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense } from "react";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import FilterPills from "./FilterPills";
 
 interface BlogClientProps {
