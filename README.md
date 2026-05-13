@@ -19,12 +19,32 @@
 
 ## 🤖 Agent Intelligence
 
-The repository includes a comprehensive library of **25+ specialized agent skills** located in `.agents/skills/`. These skills enable autonomous agents to handle complex engineering tasks with senior-level rigor:
+The repository includes a comprehensive library of **25+ specialized agent skills** located in `.gemini/skills/`. These skills enable autonomous agents to handle complex engineering tasks with senior-level rigor:
 
 - **Architecture**: `spec-driven-development`, `api-and-interface-design`, `documentation-and-adrs`
 - **Execution**: `incremental-implementation`, `test-driven-development`, `context-engineering`
 - **Validation**: `code-review-and-quality`, `browser-testing-with-devtools`, `security-and-hardening`
 - **Delivery**: `git-workflow-and-versioning`, `ci-cd-and-automation`, `shipping-and-launch`
+
+### ⌨️ Custom Commands
+
+The project defines custom slash commands in `.gemini/commands/` to orchestrate multi-step workflows:
+
+- `/spec` — Start spec-driven development
+- `/planning` — Break work into small verifiable tasks
+- `/build` — Implement the next task incrementally (TDD)
+- `/test` — Run TDD workflow for features or bugs
+- `/review` — Conduct a five-axis code review
+- `/code-simplify` — Refactor for clarity without changing behavior
+- `/ship` — Run parallel specialist reviews and merge for launch
+
+### 🔗 Workflow Hooks
+
+Automated lifecycle enhancements in `.gemini/hooks/`:
+
+- **SDD Cache** — Cross-session citation caching for official documentation
+- **Simplify Ignore** — Block-level protection for sensitive code during refactoring
+- **Session Start** — Automatic injection of core operating behaviors
 
 ## 🚀 Getting Started
 
@@ -62,7 +82,7 @@ This triggers:
 
 - `app/`: Next.js App Router (React 19 components)
 - `content/`: Markdown sources for the blog
-- `.agents/skills/`: Executable instructions for AI agents
+- `.gemini/`: Gemini CLI configuration (skills, commands, hooks)
 - `docs/arch/`: Project invariants and architectural rules
 - `scripts/`: Custom automation for the development lifecycle
 
