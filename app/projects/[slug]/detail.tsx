@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { projects } from "@/app/projects/data";
+import { getProjectBySlug } from "@/app/projects/data";
 import ScrollToTop from "@/app/components/ScrollToTop";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return (

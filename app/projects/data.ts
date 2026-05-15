@@ -1,130 +1,37 @@
-import { DeploymentStatus, Project, ProjectTag, TechStack } from "@/app/models/types";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+import { cache } from "react";
 
-export const projects: Project[] = [
-  {
-    id: 10,
-    name: "agent m",
-    slug: "agent-m",
-    description:
-      "a dynamic and fully autonomous agentic ai trading portfolio companion designed to navigate the complex digital financial landscape. leveraging a multi-agent ai architecture, the platform transforms real-time market data, traditional news, and internet sentiment into personalised, actionable investment decisions.",
-    features: [
-      "multi-agent ai architecture: sophisticated multi-agent system for autonomous investment decisions.",
-      "real-time data ingestion: scrapes financial news and internet sentiment from yahoo, reddit, and x.",
-      "nlp news analysis: uses spacy and finbert for event extraction and sentiment analysis.",
-      "credibility & fact-checking: validates claims and assigns credibility scores to weighted sentiment.",
-      "rag chatbot: natural language interface for querying news and portfolio context.",
-      "autonomous trading agent: executes buy/sell orders via alpaca/ibkr based on market data.",
-      "visualisation dashboard: real-time sentiment indicators, p&l trends, and holdings.",
-      "notification system: alerts for breaking news and trade execution confirmations.",
-    ],
-    tags: [2026, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.AI_AGENTS],
-    gitHub: "https://github.com/SMU-IS/agentic-ai-trading-be",
-    techStack: [
-      TechStack.FAST_API,
-      TechStack.PYTHON,
-      TechStack.GO,
-      TechStack.LANG_CHAIN,
-      TechStack.LANG_GRAPH,
-      TechStack.NEXT_JS,
-      TechStack.TAILWIND_CSS,
-      TechStack.QDRANT,
-      TechStack.POSTGRESQL,
-      TechStack.MONGODB,
-      TechStack.REDIS,
-      TechStack.DOCKER,
-      TechStack.TERRAFORM,
-      TechStack.KUBERNETES,
-      TechStack.KONG_GATEWAY,
-      TechStack.LARGE_LANGUAGE_MODELS,
-      TechStack.AMAZON_WEB_SERVICES,
-    ],
-    deploymentStatus: DeploymentStatus.DEPLOYED,
-    deployedLink: "https://agentic-m.com",
-    awards: ["Dell Technologies (Cloud Native Award) Champion"],
-  },
-  {
-    id: 9,
-    name: "brew intelligence",
-    slug: "brew-intelligence",
-    description:
-      "brew intelligence - your personal coffee companion. whether you're pulling a perfect espresso, dialing in a v60, or experimenting with your coffee setup, brew intelligence is here to help you brew better.",
-    features: [
-      "browse a curated coffee bean library featuring origins, roast profiles, tasting notes, and processing methods.",
-      "add your own recipes and fine-tune them over time.",
-      "track your personal coffee beans, log roast dates, origin details, and freshness reminders to keep every cup fresh.",
-      "chat with brew intelligence to get support guidance, from dialing in espresso to troubleshooting your pour-over.",
-      "custom retrieval-augmented generation (rag) pipeline combining semantic search with llms to generate contextually relevant answers.",
-      "token-bucket algorithm for rate limiting (50 requests per min) to prevent api overload.",
-      "redis caching to reduce database reads and cut api response time from 790ms to 50ms.",
-      "large language models analysis of grind results to deliver tailored brewing advice.",
-    ],
-    tags: [2025, ProjectTag.SOFTWARE_ENGINEERING],
-    gitHub: "https://github.com/joshydavid/brew-intelligence",
-    techStack: [
-      TechStack.JAVA,
-      TechStack.SPRING_BOOT,
-      TechStack.REACT,
-      TechStack.TAILWIND_CSS,
-      TechStack.POSTGRESQL,
-      TechStack.REDIS,
-      TechStack.AMAZON_WEB_SERVICES,
-    ],
-    deploymentStatus: DeploymentStatus.DEPLOYED,
-    deployedLink: "https://brew.joshydavid.com",
-    isMobile: true,
-  },
-  {
-    id: 8,
-    name: "walking trails @ cdc",
-    slug: "walking-trails-cdc",
-    description:
-      "an innovative phygital initiative by the five community development councils (cdcs), in collaboration with government technology agency (govtech) to promote community engagement and an active lifestyle by blending brisk-walking with digital gamification.",
-    features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH],
-    techStack: [
-      TechStack.TYPESCRIPT,
-      TechStack.KOA_JS,
-      TechStack.NEXT_JS,
-      TechStack.TAILWIND_CSS,
-      TechStack.TYPEORM,
-      TechStack.POSTGRESQL,
-      TechStack.AMAZON_WEB_SERVICES,
-    ],
-    deploymentStatus: DeploymentStatus.DEPLOYED,
-    deployedLink: "https://www.crowdtask.gov.sg/quest/walking-trails-cdc",
-    isMobile: true,
-  },
-  {
-    id: 7,
-    name: "hpb x govtech hackathon",
-    slug: "scan",
-    description:
-      "problem statement - how might we improve this method of identifying healthier purchases so that hpb can reward individuals for making healthier choice purchases, regardless of where they shop?",
-    features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH, ProjectTag.HACKATHON],
-    techStack: [TechStack.TYPESCRIPT, TechStack.NEXT_JS, TechStack.NEST_JS, TechStack.TAILWIND_CSS],
-    deploymentStatus: DeploymentStatus.DEPLOYED,
-    deployedLink: "https://gt-scan.vercel.app/login",
-    isMobile: true,
-  },
-  {
-    id: 6,
-    name: "sparks",
-    slug: "sparks",
-    description:
-      "one of the greenfield govtech internship projects i've worked on, sparks is a product recommender app that helps government agency users discover a suite of products built in-house.",
-    features: [],
-    tags: [2024, ProjectTag.SOFTWARE_ENGINEERING, ProjectTag.GOVTECH],
-    techStack: [
-      TechStack.TYPESCRIPT,
-      TechStack.NEXT_JS,
-      TechStack.TAILWIND_CSS,
-      TechStack.KOA_JS,
-      TechStack.TYPEORM,
-      TechStack.POSTGRESQL,
-      TechStack.OPENAI,
-    ],
-    deploymentStatus: DeploymentStatus.DEPLOYED,
-    deployedLink: "https://sparks.crowdtask.gov.sg",
-  },
-];
+import { Project } from "@/app/models/types";
+
+const projectsDirectory = path.join(process.cwd(), "content/projects");
+
+export const getProjects = cache(async (): Promise<Project[]> => {
+  if (!fs.existsSync(projectsDirectory)) {
+    return [];
+  }
+
+  const fileNames = await fs.promises.readdir(projectsDirectory);
+  const projectsPromises = fileNames
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map(async (fileName) => {
+      const slug = fileName.replace(/\.md$/, "");
+      const fullPath = path.join(projectsDirectory, fileName);
+      const fileContents = await fs.promises.readFile(fullPath, "utf8");
+      const { data } = matter(fileContents);
+
+      return {
+        ...data,
+        slug: data.slug || slug,
+      } as Project;
+    });
+
+  const allProjectsData = await Promise.all(projectsPromises);
+  return allProjectsData.sort((a, b) => (a.id < b.id ? 1 : -1));
+});
+
+export const getProjectBySlug = cache(async (slug: string): Promise<Project | undefined> => {
+  const projects = await getProjects();
+  return projects.find((p) => p.slug === slug);
+});

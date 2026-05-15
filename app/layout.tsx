@@ -8,7 +8,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./globals.css";
 import GlobalSearch from "@/app/components/GlobalSearch";
 import { getBlogPosts } from "@/app/blog/data";
-import { projects } from "@/app/projects/data";
+import { getProjects } from "@/app/projects/data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -54,6 +54,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const allPosts = await getBlogPosts();
+  const allProjects = await getProjects();
   
   const blogSearchItems = allPosts.map(post => ({
     id: post.id,
@@ -63,7 +64,7 @@ export default async function RootLayout({
     description: post.description
   }));
 
-  const projectSearchItems = projects.map(project => ({
+  const projectSearchItems = allProjects.map(project => ({
     id: project.id,
     title: project.name,
     slug: project.slug,

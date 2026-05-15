@@ -1,9 +1,11 @@
 import Link from "next/link";
 
-import { projects } from "@/app/projects/data";
+import { getProjects } from "@/app/projects/data";
 import ScrollToTop from "@/app/components/ScrollToTop";
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
+
   return (
     <div className="animate-fade-in">
       <ScrollToTop />
