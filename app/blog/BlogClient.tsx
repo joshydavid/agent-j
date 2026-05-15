@@ -2,9 +2,9 @@
 
 import { BlogPost } from "@/app/models/types";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useMemo } from "react";
-import FilterPills from "./FilterPills";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useMemo, useTransition } from "react";
+import { HiX } from "react-icons/hi";
 
 interface BlogClientProps {
   allPosts: BlogPost[];
@@ -13,16 +13,19 @@ interface BlogClientProps {
 
 function BlogListContent({ allPosts, allTags }: BlogClientProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
 
   const activeTags = useMemo(() => {
     const tags = new Set<string>();
-    const mainTag = searchParams.get("tag");
+    const mainTag = searchParams.get("tag")?.toLowerCase();
     if (mainTag) tags.add(mainTag);
 
     for (const key of searchParams.keys()) {
-      if (key !== "tag" && allTags.includes(key)) {
-        tags.add(key);
+      const lowerKey = key.toLowerCase();
+      if (lowerKey !== "tag" && allTags.includes(lowerKey)) {
+        tags.add(lowerKey);
       }
     }
     return Array.from(tags);
@@ -34,9 +37,76 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
     });
   }, [allPosts, activeTags]);
 
+  const handleTagToggle = useCallback(
+    (tag: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      const currentActive = new Set(activeTags);
+
+      if (currentActive.has(tag)) {
+        currentActive.delete(tag);
+      } else {
+        currentActive.add(tag);
+      }
+
+      params.delete("tag");
+      allTags.forEach((t) => params.delete(t));
+
+      const tagList = Array.from(currentActive);
+      if (tagList.length > 0) {
+        params.set("tag", tagList[0]);
+        tagList.slice(1).forEach((t) => params.set(t, ""));
+      }
+
+      const queryString = params.toString().replace(/=&/g, "&").replace(/=$/, "");
+      
+      startTransition(() => {
+        router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false });
+      });
+    },
+    [activeTags, allTags, pathname, router, searchParams],
+  );
+
+  const clearFilters = () => {
+    startTransition(() => {
+      router.replace(pathname, { scroll: false });
+    });
+  };
+
   return (
     <>
-      <FilterPills tags={allTags} activeTags={activeTags} />
+      {/* Ultra-Minimalist Category Filter Section */}
+      <div className="mb-16">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {allTags.map((tag) => {
+            const isActive = activeTags.includes(tag);
+            return (
+              <button
+                key={tag}
+                onClick={() => handleTagToggle(tag)}
+                className={`px-4 py-1.5 text-[11px] font-medium rounded-full transition-[background-color,color,border-color] duration-200 lowercase cursor-pointer border ${
+                  isActive
+                    ? "bg-slate-100 text-black border-transparent"
+                    : "bg-white text-slate-400 border-slate-200 hover:border-slate-300 hover:text-black"
+                }`}
+              >
+                {tag}
+              </button>
+            );
+          })}
+          
+          {activeTags.length > 0 && (
+            <button
+              onClick={clearFilters}
+              disabled={isPending}
+              aria-label="clear all filters"
+              className="ml-2 flex items-center gap-1.5 text-[11px] font-medium text-slate-300 hover:text-black transition-colors lowercase cursor-pointer disabled:opacity-50"
+            >
+              <HiX className="w-3 h-3" />
+              clear
+            </button>
+          )}
+        </div>
+      </div>
 
       <section aria-live="polite">
         {filteredPosts.length > 0 ? (
@@ -58,9 +128,15 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
                 <p className="mt-3 text-base leading-7 text-slate-600">{post.description}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {post.tags.map((tag) => (
-                    <span key={tag} className="text-[11px] font-mono text-slate-400">
+                    <button
+                      key={tag}
+                      onClick={() => handleTagToggle(tag)}
+                      className={`text-[11px] font-mono lowercase transition-colors hover:text-black cursor-pointer ${
+                        activeTags.includes(tag) ? "text-black font-semibold" : "text-slate-400"
+                      }`}
+                    >
                       #{tag}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </li>
@@ -70,7 +146,7 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
           <div className="py-12 text-center border border-dashed border-slate-200 rounded-lg">
             <p className="text-slate-600 font-medium">no blog posts found for the selected filters.</p>
             <button
-              onClick={() => router.replace(window.location.pathname, { scroll: false })}
+              onClick={clearFilters}
               className="mt-4 text-[13px] font-medium text-slate-500 hover:text-black underline underline-offset-4 decoration-slate-200"
             >
               clear all filters

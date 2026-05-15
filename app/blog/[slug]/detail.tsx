@@ -43,7 +43,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           <h1 className="text-4xl font-bold tracking-tight text-black">{post.title}</h1>
           <div className="mt-4 flex flex-wrap gap-3">
             {post.tags.map((tag) => (
-              <span key={tag} className="text-[11px] font-mono text-slate-400">
+              <span key={tag} className="text-[11px] font-mono text-slate-400 lowercase">
                 #{tag}
               </span>
             ))}

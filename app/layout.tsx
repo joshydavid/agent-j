@@ -6,6 +6,9 @@ import Link from "next/link";
 import { VercelInsights } from "@/app/providers/VercelInsights";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./globals.css";
+import GlobalSearch from "@/app/components/GlobalSearch";
+import { getBlogPosts } from "@/app/blog/data";
+import { projects } from "@/app/projects/data";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -45,19 +48,39 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const allPosts = await getBlogPosts();
+  
+  const blogSearchItems = allPosts.map(post => ({
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    type: "blog" as const,
+    description: post.description
+  }));
+
+  const projectSearchItems = projects.map(project => ({
+    id: project.id,
+    title: project.name,
+    slug: project.slug,
+    type: "project" as const,
+    description: project.description
+  }));
+
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex justify-center bg-white antialiased">
+        <GlobalSearch blogPosts={blogSearchItems} projects={projectSearchItems} />
+        
         <div className="flex flex-col md:flex-row w-full max-w-5xl">
           {/* Sidebar / Navigation */}
           <header className="w-full md:w-64 md:border-r md:border-slate-100 shrink-0 md:sticky md:top-0 md:h-screen">
             <nav className="px-8 pt-8 pb-2 md:px-12 md:py-16 h-full flex flex-col">
-              <div className="mb-2 md:mb-12">
+              <div className="flex items-center justify-between mb-2 md:mb-12">
                 <Link href="/" className="inline-block group rounded-full">
                   <Image
                     src={EXTERNAL_LINKS.PROFILE_PICTURE}

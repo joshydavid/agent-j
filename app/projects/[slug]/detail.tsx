@@ -36,19 +36,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </nav>
 
       <article>
-        <header className="mb-12 border-b border-slate-200 pb-12">
+        <header className="mb-8 border-b border-slate-200 pb-8">
           {project.awards && project.awards.length > 0 && (
-            <div className="mb-8 flex text-[11px] items-center gap-2">
+            <div className="mb-4 flex text-[11px] items-center gap-2">
               <span role="img" aria-label="award">🏆</span>
               <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
             </div>
           )}
 
-          <time className="block mb-4 text-xs font-mono text-slate-500">
+          <time className="block mb-2 text-xs font-mono text-slate-500">
             {project.tags.find((t) => typeof t === "number")}
           </time>
           <h1 className="text-4xl font-bold tracking-tight text-black">{project.name}</h1>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-3 flex flex-wrap gap-3">
             {project.tags
               .filter((t) => typeof t !== "number")
               .map((tag) => (
@@ -60,7 +60,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </header>
 
         <div className="prose prose-slate max-w-none">
-          <p className="lead text-lg leading-7 text-slate-600">{project.description}</p>
+          <p className="text-base leading-7 text-slate-600">{project.description}</p>
 
           {project.features && project.features.length > 0 && (
             <section className="my-8">
@@ -77,7 +77,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <h2 className="text-2xl font-semibold text-black">tech stack</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <div key={tech} className="rounded-full border  border-slate-200 px-3 py-1 text-sm">
+                <div key={tech} className="rounded-full border border-slate-200 px-2.5 py-0.5 text-[11px] text-slate-600">
                   {tech}
                 </div>
               ))}

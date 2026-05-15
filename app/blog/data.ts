@@ -34,13 +34,13 @@ export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
       }
 
       return {
-        id: data.id || 0,
+        id: data.id || slug,
         title: data.title,
         slug,
         date: postDate,
         description: data.description,
         content,
-        tags: data.tags || [],
+        tags: (data.tags || []).map((tag: string) => tag.toLowerCase()),
       } as BlogPost;
     });
 
@@ -55,5 +55,5 @@ export const getBlogPostBySlug = cache(async (slug: string): Promise<BlogPost | 
 
 export const getUniqueTags = cache(async (): Promise<string[]> => {
   const posts = await getBlogPosts();
-  return Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
+  return Array.from(new Set(posts.flatMap((post) => post.tags.map((t) => t.toLowerCase())))).sort();
 });

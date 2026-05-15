@@ -40,3 +40,15 @@ body {
     outline: 2px solid var(--foreground);
     outline-offset: 2px;
 }
+
+/* Definitively kill all black focus borders in the blog filter palette */
+[data-cmdk-root], 
+[data-cmdk-root] *,
+[role="combobox"],
+[role="combobox"] *,
+[role="dialog"],
+[role="dialog"] *,
+[data-radix-portal] * {
+    outline: none !important;
+    box-shadow: none !important;
+}

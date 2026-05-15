@@ -11,8 +11,11 @@
     "harness": "bun run lint && bun run check:types && bun run build"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-visually-hidden": "^1.2.4",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "cmdk": "^1.1.1",
     "gray-matter": "^4.0.3",
     "next": "16.2.1-canary.42",
     "react": "19.2.5",
