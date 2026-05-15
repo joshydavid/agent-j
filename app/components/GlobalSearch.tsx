@@ -4,7 +4,7 @@ import { EXTERNAL_LINKS } from "@/app/constants/links";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Command } from "cmdk";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import {
@@ -62,7 +62,6 @@ export default function GlobalSearch({ blogPosts, projects }: GlobalSearchProps)
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
-  const pathname = usePathname();
 
   // Handle scroll to hide/show search trigger
   useEffect(() => {
@@ -90,7 +89,8 @@ export default function GlobalSearch({ blogPosts, projects }: GlobalSearchProps)
     const saved = localStorage.getItem(RECENT_ITEMS_KEY);
     if (saved) {
       try {
-        setRecentItems(JSON.parse(saved));
+        const items = JSON.parse(saved);
+        setTimeout(() => setRecentItems(items), 0);
       } catch (e) {
         console.error("Failed to parse recent search items", e);
       }
@@ -102,8 +102,11 @@ export default function GlobalSearch({ blogPosts, projects }: GlobalSearchProps)
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
-        if (!open) setSearch(""); // Clear search when opening
+        setOpen((prev) => {
+          const next = !prev;
+          if (next) setSearch(""); // Clear search when opening
+          return next;
+        });
       }
     };
 
