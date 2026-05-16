@@ -5,7 +5,13 @@ export default function Home() {
     <div className="animate-fade-in">
       <section className="mb-12">
         <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">joshua</h1>
-        <p className="text-lg leading-7 text-slate-600 max-w-2xl">software engineer intern, cpf board</p>
+        <p className="flex items-center gap-2 text-lg leading-7 text-slate-600 max-w-2xl">
+          <span className="relative flex h-2 w-2 translate-y-[1px]">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-300 opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-400"></span>
+          </span>
+          <span>software engineer</span>
+        </p>
       </section>
 
       <section className="mb-12">
