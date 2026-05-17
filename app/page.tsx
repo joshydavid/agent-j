@@ -1,4 +1,5 @@
 import { companies } from "@/app/constants/experience";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -31,10 +32,15 @@ export default function Home() {
       <section className="mt-12">
         <h2 className="mb-6 text-sm font-bold tracking-widest uppercase text-black">experience</h2>
         <ul className="space-y-6">
-          {companies.map(({ id, company, position, timeline }) => (
+          {companies.map(({ id, company, position, timeline, logo }) => (
             <li key={id} className="flex flex-col md:flex-row md:items-center justify-between gap-1 md:gap-4">
               <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
-                <span className="text-[15px] font-semibold text-black">{company}</span>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-8 h-8 overflow-hidden rounded-md border border-slate-100 shrink-0">
+                    <Image src={logo} alt={`${company} logo`} fill className="object-contain p-1.5" />
+                  </div>
+                  <span className="text-[15px] font-semibold text-black">{company}</span>
+                </div>
                 <span className="hidden md:block text-slate-300">/</span>
                 <span className="text-[14px] text-slate-600">{position}</span>
               </div>

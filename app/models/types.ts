@@ -86,4 +86,5 @@ export interface Experience {
   company: string;
   position: string;
   timeline: string;
+  logo: string;
 }
