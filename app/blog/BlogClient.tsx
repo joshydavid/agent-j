@@ -99,9 +99,9 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
               onClick={clearFilters}
               disabled={isPending}
               aria-label="clear all filters"
-              className="ml-2 flex items-center gap-1.5 text-[11px] font-medium text-slate-300 hover:text-black transition-colors lowercase cursor-pointer disabled:opacity-50"
+              className="ml-2 flex items-center gap-0.5 text-[11px] font-medium text-slate-300 hover:text-black transition-colors lowercase cursor-pointer disabled:opacity-50"
             >
-              <HiX className="w-3 h-3" />
+              <HiX className="w-3 h-3 translate-y-px" />
               clear
             </button>
           )}
