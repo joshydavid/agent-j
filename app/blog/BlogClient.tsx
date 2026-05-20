@@ -99,10 +99,10 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
               onClick={clearFilters}
               disabled={isPending}
               aria-label="clear all filters"
-              className="ml-2 flex items-center gap-0.5 text-[11px] font-medium text-slate-300 hover:text-black transition-colors lowercase cursor-pointer disabled:opacity-50"
+              className="px-3.5 py-1.5 text-[11px] font-medium rounded-full border border-dashed border-slate-300 bg-slate-50/50 text-slate-500 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-400 inline-flex items-center gap-1.5 transition-all duration-200 cursor-pointer disabled:opacity-50 active:scale-[0.98]"
             >
-              <HiX className="w-3 h-3 translate-y-px" />
-              clear
+              <HiX className="w-3.5 h-3.5" />
+              <span>clear filters</span>
             </button>
           )}
         </div>
@@ -144,12 +144,12 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
           </ul>
         ) : (
           <div className="py-12 text-center border border-dashed border-slate-200 rounded-lg">
-            <p className="text-slate-600 font-medium">no blog posts found for the selected filters.</p>
+            <p className="text-slate-600 font-medium">No blog posts found for the selected filters.</p>
             <button
               onClick={clearFilters}
-              className="mt-4 text-[13px] font-medium text-slate-500 hover:text-black underline underline-offset-4 decoration-slate-200"
+              className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 text-[12px] font-medium rounded-md border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-black transition-colors cursor-pointer"
             >
-              clear all filters
+              Reset filters
             </button>
           </div>
         )}
