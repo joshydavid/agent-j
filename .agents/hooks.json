@@ -1,12 +1,12 @@
 {
-  "hooks": {
+  "default": {
     "SessionStart": [
       {
         "matcher": "startup",
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${GEMINI_PROJECT_DIR}/.agents/hooks/session-start.sh"
+            "command": "bash ${ANTIGRAVITY_PROJECT_DIR}/.agents/hooks/session-start.sh"
           }
         ]
       }
