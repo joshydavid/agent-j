@@ -1,16 +1,4 @@
 {
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ${GEMINI_PROJECT_DIR}/.agents/hooks/session-start.sh"
-          }
-        ]
-      }
-    ]
-  },
   "mcpServers": {
     "next-devtools": {
       "command": "bunx",
