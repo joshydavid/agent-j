@@ -2,7 +2,7 @@
 title: "living on the edge"
 date: "2026-05-11"
 description: "why the future of infrastructure isn't just in the cloud but at the perimeter"
-tags: ["edge-computing", "dell-native-edge", "infrastructure"]
+tags: ["edge-computing", "dell-distributed-private-cloud", "infrastructure"]
 ---
 
 as we move further into the decade, the centralised cloud is no longer the only game in town. with the explosion of iot devices, autonomous systems, and real-time analytics, we're seeing a massive shift toward edge computing.
@@ -23,7 +23,7 @@ _benefits of edge computing_
 an edge ecosystem isn't just one device but a hierarchy of components working in tandem:
 
 - **edge devices**: the "things" that generate data e.g sensors, smart cameras, actuators, and iot devices.
-- **edge nodes/gateways**: local servers (like dell poweredge or optiplex industrial PCs) that aggregate data from devices and perform initial processing.
+- **edge nodes/gateways**: local servers (like Dell PowerEdge) that aggregate data from devices and perform initial processing.
 - **edge cloud**: regional data centers that sit between the local edge and the core cloud, providing more compute power than a gateway but lower latency than the core.
 - **core cloud/data center**: the centralised hub used for long-term storage, heavy machine learning training, and global management.
 
@@ -38,14 +38,14 @@ the workflow of an edge-enabled system usually follows this path:
 
 ## simplifying edge operations at scale
 
-managing one edge device is easy. managing 10,000 devices spread across retail stores, factories, and cell towers is a nightmare. this is where [Dell NativeEdge](https://www.dell.com/en-sg/shop/storage-servers-and-networking-for-business/sf/nativeedge) comes in.
+managing one edge device is easy, but doing so for 10,000 devices that spread across retail stores, factories, and cell towers is a nightmare. this is where [Dell Distributed Private Cloud](https://www.dell.com/en-sg/shop/storage-servers-and-networking-for-business/sf/nativeedge) comes in.
 
-NativeEdge is an edge operations software platform designed to simplify and secure edge deployments at scale. it acts as the connective tissue between your hardware and your applications.
+Dell Distributed Private Cloud is an edge operations software platform designed to simplify and secure edge deployments at scale. it acts as the connective tissue between your hardware and your applications.
 
-_key technologies in NativeEdge_
+_key technologies in Dell Distributed Private Cloud_
 
-- **secure device onboarding (fdo)**: NativeEdge utilizes the fido device on-boarding standard to allow for "zero-touch" deployment. you can ship a device to a remote site, plug it in, and it automatically and securely authenticates with the orchestrator.
-- **zero trust architecture**: security is baked in from the silicon up. NativeEdge uses hardware-based root of trust and encrypted communication to ensure that only authorized applications run on authorized hardware.
+- **secure device onboarding (fdo)**: Dell Distributed Private Cloud utilises the fido device on-boarding standard to allow for zero-touch deployment. you can ship a device to a remote site, plug it in, and it automatically and securely authenticates with the orchestrator.
+- **zero trust architecture**: security is baked in from the silicon up, it uses hardware-based root of trust and encrypted communication to ensure that only authorized applications run on authorized hardware.
 - **centralised orchestration**: it provides a single pane of glass to deploy virtual machines (vms) and containerised workloads (kubernetes) across your entire edge estate.
 - **application blueprints**: engineers can define complex application stacks once and deploy them consistently across diverse edge environments.
 
@@ -59,7 +59,9 @@ building for the edge requires a specialised stack:
 
 ## wrapping up
 
-the edge isn't replacing the cloud but it's extending it. by bringing compute power to where the action happens, we're enabling a new class of intelligent infrastructure. for those building the next generation of private and hybrid clouds, platforms like NativeEdge are the blueprint for how we'll manage the billions of devices coming online.
+the edge isn't replacing the cloud but it's extending it. by bringing compute power to where the action happens, we're enabling a new class of intelligent infrastructure.
+
+for those building the next generation of private and hybrid clouds, platforms like Dell Distributed Private Cloud are the blueprint for how we'll manage the billions of devices coming online.
 
 ## credits / more info
 
