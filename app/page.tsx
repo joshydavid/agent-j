@@ -1,5 +1,6 @@
-import { companies } from "@/app/constants/experience";
 import Image from "next/image";
+
+import { companies } from "@/app/constants/experience";
 
 export default function Home() {
   return (
@@ -37,7 +38,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3">
                 <div className="flex items-center gap-3">
                   <div className="relative w-8 h-8 overflow-hidden rounded-md border border-slate-100 shrink-0">
-                    <Image src={logo} alt={`${company} logo`} fill className="object-contain p-1.5" />
+                    <Image src={logo} alt={`${company} logo`} fill sizes="32px" className="object-contain p-1.5" />
                   </div>
                   <span className="text-[15px] font-semibold text-black">{company}</span>
                 </div>

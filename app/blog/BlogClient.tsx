@@ -1,10 +1,10 @@
 "use client";
-
-import { BlogPost } from "@/app/models/types";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useMemo, useTransition } from "react";
 import { HiX } from "react-icons/hi";
+
+import { BlogPost } from "@/app/models/types";
 
 interface BlogClientProps {
   allPosts: BlogPost[];
@@ -58,7 +58,7 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
       }
 
       const queryString = params.toString().replace(/=&/g, "&").replace(/=$/, "");
-      
+
       startTransition(() => {
         router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false });
       });
@@ -93,7 +93,7 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
               </button>
             );
           })}
-          
+
           {activeTags.length > 0 && (
             <button
               onClick={clearFilters}

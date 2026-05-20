@@ -1,14 +1,16 @@
-import { EXTERNAL_LINKS } from "@/app/constants/links";
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { VercelInsights } from "@/app/providers/VercelInsights";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
-import "./globals.css";
-import GlobalSearch from "@/app/components/GlobalSearch";
+
 import { getBlogPosts } from "@/app/blog/data";
+import GlobalSearch from "@/app/components/GlobalSearch";
+import { EXTERNAL_LINKS } from "@/app/constants/links";
 import { getProjects } from "@/app/projects/data";
+import { VercelInsights } from "@/app/providers/VercelInsights";
 
 const inter = Inter({
   variable: "--font-inter",

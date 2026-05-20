@@ -1,6 +1,5 @@
 "use client";
 
-import { EXTERNAL_LINKS } from "@/app/constants/links";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Command } from "cmdk";
@@ -16,6 +15,8 @@ import {
   HiOutlineLink,
   HiSearch,
 } from "react-icons/hi";
+
+import { EXTERNAL_LINKS } from "@/app/constants/links";
 
 interface SearchItem {
   id: string | number;

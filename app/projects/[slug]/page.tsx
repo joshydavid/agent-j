@@ -1,4 +1,5 @@
 import { getProjects } from "@/app/projects/data";
+
 import ProjectDetailPage from "./detail";
 
 export async function generateStaticParams() {

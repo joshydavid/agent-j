@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { getProjectBySlug } from "@/app/projects/data";
 import ScrollToTop from "@/app/components/ScrollToTop";
+import { getProjectBySlug } from "@/app/projects/data";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -39,7 +39,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <header className="mb-8 border-b border-slate-200 pb-8">
           {project.awards && project.awards.length > 0 && (
             <div className="mb-4 flex text-[11px] items-center gap-2">
-              <span role="img" aria-label="award">🏆</span>
+              <span role="img" aria-label="award">
+                🏆
+              </span>
               <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
             </div>
           )}
@@ -77,7 +79,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <h2 className="text-2xl font-semibold text-black">tech stack</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <div key={tech} className="rounded-full border border-slate-200 px-2.5 py-0.5 text-[11px] text-slate-600">
+                <div
+                  key={tech}
+                  className="rounded-full border border-slate-200 px-2.5 py-0.5 text-[11px] text-slate-600"
+                >
                   {tech}
                 </div>
               ))}

@@ -1,6 +1,7 @@
 import { getBlogPosts, getUniqueTags } from "@/app/blog/data";
-import BlogClient from "./BlogClient";
 import ScrollToTop from "@/app/components/ScrollToTop";
+
+import BlogClient from "./BlogClient";
 
 export default async function BlogPage() {
   const allPosts = await getBlogPosts();

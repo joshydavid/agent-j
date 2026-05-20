@@ -1,4 +1,5 @@
 import { getBlogPosts } from "@/app/blog/data";
+
 import BlogDetailPage from "./detail";
 
 export async function generateStaticParams() {

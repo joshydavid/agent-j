@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { getProjects } from "@/app/projects/data";
 import ScrollToTop from "@/app/components/ScrollToTop";
+import { getProjects } from "@/app/projects/data";
 
 export default async function ProjectsPage() {
   const projects = await getProjects();

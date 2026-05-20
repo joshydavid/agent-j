@@ -46,7 +46,7 @@ This project uses Next.js 16+ with MANDATORY MCP integration.
 
 ## Execution Rules
 
-- **Bun Priority**: Always use `bun` (e.g., `bun dev`, `bun add`) for terminal commands.
+- **Bun Priority**: Always use `bun` (e.g., `bun dev`, `bun add`, `bun run format`) for terminal commands.
 - **MCP Verification**: Use `browser_eval` to verify UI changes in a real browser context.
 - **Accessibility**: Prioritize A11y. Use `browser_eval` to run accessibility audits if needed.
 
