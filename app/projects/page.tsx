@@ -23,13 +23,15 @@ export default async function ProjectsPage() {
             >
               {project.awards && project.awards.length > 0 && (
                 <div className="mb-4 flex text-[11px] items-center gap-2">
-                  <span role="img" aria-label="award">🏆</span>
+                  <span role="img" aria-label="award">
+                    🏆
+                  </span>
                   <span className="font-semibold tracking-[0.15em] uppercase text-blue-500">{project.awards[0]}</span>
                 </div>
               )}
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <time className="block text-xs font-mono text-slate-500">
+                <time className="translate-y-[1.5px] block text-xs font-mono text-slate-500">
                   {project.tags.find((t) => typeof t === "number")}
                 </time>
                 <Link

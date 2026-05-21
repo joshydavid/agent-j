@@ -36,7 +36,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </nav>
 
       <article>
-        <header className="mb-8 border-b border-slate-200 pb-8">
+        <header className="flex flex-col gap-2 border-b border-slate-200 pb-8">
           {project.awards && project.awards.length > 0 && (
             <div className="mb-4 flex text-[11px] items-center gap-2">
               <span role="img" aria-label="award">
@@ -46,11 +46,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </div>
           )}
 
-          <time className="block mb-2 text-xs font-mono text-slate-500">
-            {project.tags.find((t) => typeof t === "number")}
-          </time>
+          <time className="text-xs font-mono text-slate-500">{project.tags.find((t) => typeof t === "number")}</time>
           <h1 className="text-4xl font-bold tracking-tight text-black">{project.name}</h1>
-          <div className="mt-3 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             {project.tags
               .filter((t) => typeof t !== "number")
               .map((tag) => (
