@@ -149,7 +149,7 @@ the process workflow for packaging, managing, and deploying workloads in this hy
 
 heavy tasks like training deep learning models, big data warehousing, or core software development are performed where compute resources are massive and elastic: in the customer's public cloud (AWS, Azure, Google Cloud) or core private enterprise datacenter.
 
-#### 2. compilation & optimization (the compiler)
+#### 2. compilation & optimisation (the compiler)
 
 once trained, the software/model is optimised for the specific edge hardware it will run on. for example:
 
@@ -158,7 +158,7 @@ once trained, the software/model is optimised for the specific edge hardware it 
 
 #### 3. packaging & storage (the artifact registry)
 
-the optimised application/model is bundled into standard deployable artifacts (such as Docker containers or VM images) and pushed to a secure, centralized storage location (e.g., an Artifact Server, JFrog Artifactory, AWS ECR, or a private registry).
+the optimised application/model is bundled into standard deployable artifacts (such as Docker containers or VM images) and pushed to a secure, centralised storage location (e.g., an Artifact Server, JFrog Artifactory, AWS ECR, or a private registry).
 
 #### 4. environment declaration (NativeEdge Blueprints)
 
