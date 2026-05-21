@@ -19,7 +19,7 @@
 
 ## 🤖 Agent Intelligence
 
-The repository includes a comprehensive library of **25+ specialized agent skills** located in `.gemini/skills/`. These skills enable autonomous agents to handle complex engineering tasks with senior-level rigor:
+The repository includes a comprehensive library of **25+ specialized agent skills** located in `.agents/skills/`. These skills enable autonomous agents to handle complex engineering tasks with senior-level rigor:
 
 - **Architecture**: `spec-driven-development`, `api-and-interface-design`, `documentation-and-adrs`
 - **Execution**: `incremental-implementation`, `test-driven-development`, `context-engineering`
@@ -28,7 +28,7 @@ The repository includes a comprehensive library of **25+ specialized agent skill
 
 ### ⌨️ Custom Commands
 
-The project defines custom slash commands in `.gemini/commands/` to orchestrate multi-step workflows:
+The project defines custom slash commands in `.agents/commands/` to orchestrate multi-step workflows:
 
 - `/spec` — Start spec-driven development
 - `/planning` — Break work into small verifiable tasks
@@ -40,7 +40,7 @@ The project defines custom slash commands in `.gemini/commands/` to orchestrate 
 
 ### 🔗 Workflow Hooks
 
-Automated lifecycle enhancements in `.gemini/hooks/`:
+Automated lifecycle enhancements in `.agents/hooks/`:
 
 - **SDD Cache** — Cross-session citation caching for official documentation
 - **Simplify Ignore** — Block-level protection for sensitive code during refactoring
@@ -81,7 +81,7 @@ This triggers:
 
 - `app/`: Next.js App Router (React 19 components)
 - `content/`: Markdown sources for the blog
-- `.gemini/`: Gemini CLI configuration (skills, commands, hooks)
+- `.agents/`: Gemini CLI configuration (skills, commands, hooks)
 - `docs/arch/`: Project invariants and architectural rules
 
 ## 🗳️ Developer

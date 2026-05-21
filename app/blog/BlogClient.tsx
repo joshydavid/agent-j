@@ -123,8 +123,8 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
                   >
                     {post.title}
                   </Link>
-                  <time className="translate-y-[1.5px] block text-[11px] font-mono text-slate-500">
-                    {post.date} <span className="mx-1.5">•</span> {post.readingTime}
+                  <time className="translate-y-[3px] block text-[11px] font-mono text-slate-500">
+                    {post.date} <span className="mx-1">•</span> {post.readingTime}
                   </time>
                 </div>
                 <p className="mt-3 text-base leading-7 text-slate-600">{post.description}</p>

@@ -30,17 +30,12 @@ export default async function ProjectsPage() {
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <time className="translate-y-[1.5px] block text-xs font-mono text-slate-500">
-                  {project.tags.find((t) => typeof t === "number")}
-                </time>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="text-2xl font-semibold text-black transition-colors hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
-                >
-                  {project.name}
-                </Link>
-              </div>
+              <Link
+                href={`/projects/${project.slug}`}
+                className="text-2xl font-semibold text-black transition-colors hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
+              >
+                {project.name}
+              </Link>
 
               <p className="mt-3 text-base leading-7 text-slate-600">{project.description}</p>
               <div className="mt-4 flex flex-wrap gap-3">
