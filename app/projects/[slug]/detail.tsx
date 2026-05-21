@@ -36,7 +36,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       </nav>
 
       <article>
-        <header className="flex flex-col gap-2 border-b border-slate-200 pb-8">
+        <header className="flex flex-col gap-2 border-b border-slate-200 pb-8 mb-8">
           {project.awards && project.awards.length > 0 && (
             <div className="mb-4 flex text-[11px] items-center gap-2">
               <span role="img" aria-label="award">
