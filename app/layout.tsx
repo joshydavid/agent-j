@@ -75,7 +75,7 @@ export default async function RootLayout({
   }));
 
   return (
-    <html lang="en" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${inter.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex justify-center bg-white antialiased">
         <GlobalSearch blogPosts={blogSearchItems} projects={projectSearchItems} />
         
