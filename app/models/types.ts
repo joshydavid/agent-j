@@ -66,6 +66,7 @@ export interface BlogPost {
   description: string;
   content: string;
   tags: string[];
+  readingTime: string;
 }
 
 export interface ApiEndpoints {

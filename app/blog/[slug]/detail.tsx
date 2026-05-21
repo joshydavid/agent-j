@@ -146,10 +146,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       </nav>
 
       <article>
-        <header className="mb-12 border-b border-slate-200 pb-12">
-          <time className="block mb-4 text-xs font-mono text-slate-500">{post.date}</time>
+        <header className="mb-12 border-b border-slate-200 pb-12 flex flex-col gap-4">
+          <time className="translate-y-px block text-[11px] font-mono text-slate-500">
+            {post.date} <span className="mx-1.5">•</span> {post.readingTime}
+          </time>
           <h1 className="text-4xl font-bold tracking-tight text-black">{post.title}</h1>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3">
             {post.tags.map((tag) => (
               <span key={tag} className="text-[11px] font-mono text-slate-400 lowercase">
                 #{tag}
@@ -160,9 +162,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
         {tocItems.length >= 2 && (
           <div className="mb-10 p-5 rounded-2xl bg-slate-50/50 border border-slate-100 hover:border-slate-200/80 hover:bg-slate-50 transition-all duration-300">
-            <h2 className="mb-4 text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
-              on this page
-            </h2>
+            <h2 className="mb-4 text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">on this page</h2>
             <ul className="flex flex-col gap-y-2">
               {tocItems.map((item) => (
                 <li

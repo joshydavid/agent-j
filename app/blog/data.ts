@@ -33,6 +33,10 @@ export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
         }
       }
 
+      const words = content.trim().split(/\s+/).length;
+      const readingTime = Math.ceil(words / 200);
+      const readingTimeFormatted = readingTime === 1 ? `1 min read` : `${readingTime} mins read`;
+
       return {
         id: data.id || slug,
         title: data.title,
@@ -41,6 +45,7 @@ export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
         description: data.description,
         content,
         tags: (data.tags || []).map((tag: string) => tag.toLowerCase()),
+        readingTime: readingTimeFormatted,
       } as BlogPost;
     });
 

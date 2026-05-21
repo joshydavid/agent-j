@@ -116,14 +116,16 @@ function BlogListContent({ allPosts, allTags }: BlogClientProps) {
                 key={post.slug}
                 className="group border-b border-slate-200 pb-12 transition-colors last:border-0 hover:border-slate-300"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                  <time className="block text-xs font-mono text-slate-500">{post.date}</time>
+                <div className="flex flex-col flex-wrap sm:flex-row sm:items-center gap-6">
                   <Link
                     href={`/blog/${post.slug}`}
                     className="text-2xl font-semibold text-black transition-colors hover:text-slate-600 rounded-sm focus-visible:outline-none focus-visible:underline focus-visible:decoration-slate-400"
                   >
                     {post.title}
                   </Link>
+                  <time className="translate-y-[1.5px] block text-[11px] font-mono text-slate-500">
+                    {post.date} <span className="mx-1.5">•</span> {post.readingTime}
+                  </time>
                 </div>
                 <p className="mt-3 text-base leading-7 text-slate-600">{post.description}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
