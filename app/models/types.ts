@@ -88,4 +88,5 @@ export interface Experience {
   position: string;
   timeline: string;
   logo: string;
+  logoPadding?: string;
 }
