@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { BookOpen, Folder, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -122,17 +123,28 @@ export default function SidebarNav() {
               const active = isActive(item.href);
               const Icon = item.icon;
               return (
-                <li key={item.href} className="flex-1">
+                <li key={item.href} className="flex-1 relative">
                   <Link
                     href={item.href}
-                    className={`flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 ${
+                    className={`relative flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 ${
                       active
-                        ? "bg-slate-100 text-slate-950 font-semibold shadow-xs"
+                        ? "text-slate-950 font-semibold"
                         : "text-slate-500 hover:text-slate-950 hover:bg-slate-50"
                     }`}
                   >
-                    <Icon size={12} className={active ? "text-slate-950" : "text-slate-400"} />
-                    <span>{item.label}</span>
+                    {active && (
+                      <motion.span
+                        layoutId="active-pill-mobile"
+                        className="absolute inset-0 bg-slate-100 rounded-lg shadow-xs -z-10"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                    <Icon size={12} className={`transition-colors duration-200 z-10 ${active ? "text-slate-950" : "text-slate-400"}`} />
+                    <span className="z-10">{item.label}</span>
                   </Link>
                 </li>
               );
@@ -162,7 +174,7 @@ export default function SidebarNav() {
                 </span>
               </Link>
             </div>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-1 relative">
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 const Icon = item.icon;
@@ -170,20 +182,39 @@ export default function SidebarNav() {
                   <li key={item.href} className="relative">
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 ${
+                      className={`group relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 ${
                         active
-                          ? "bg-slate-100 text-slate-950 font-semibold"
-                          : "text-slate-500 hover:text-slate-950 hover:bg-slate-50/70"
+                          ? "text-slate-950 font-semibold"
+                          : "text-slate-500 hover:text-slate-950 hover:bg-slate-50/40"
                       }`}
                     >
                       {active && (
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-slate-950 rounded-r-md" />
+                        <>
+                          <motion.span
+                            layoutId="active-pill-desktop"
+                            className="absolute inset-0 bg-slate-100 rounded-xl -z-10"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }}
+                          />
+                          <motion.span
+                            layoutId="active-indicator-desktop"
+                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-slate-950 rounded-r-md"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }}
+                          />
+                        </>
                       )}
                       <Icon
                         size={16}
-                        className={`transition-colors duration-200 ${active ? "text-slate-950" : "text-slate-400 group-hover:text-slate-600"}`}
+                        className={`transition-colors duration-200 z-10 ${active ? "text-slate-950" : "text-slate-400 group-hover:text-slate-600"}`}
                       />
-                      <span>{item.label}</span>
+                      <span className="z-10">{item.label}</span>
                     </Link>
                   </li>
                 );
