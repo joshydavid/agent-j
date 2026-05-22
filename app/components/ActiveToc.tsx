@@ -74,18 +74,14 @@ export default function ActiveToc({ items }: ActiveTocProps) {
             className="flex items-center gap-2 text-sm"
           >
             <span
-              className={`font-mono text-[10px] select-none transition-colors duration-300 ${
-                isActive ? "text-slate-900 font-bold" : "text-slate-350"
-              }`}
+              className="font-mono text-[10px] select-none text-slate-350"
             >
               {item.level === 3 ? "↳" : "•"}
             </span>
             <a
               href={`#${item.slug}`}
-              className={`transition-all duration-300 underline-offset-4 hover:underline ${
-                isActive
-                  ? "text-black font-semibold translate-x-0.5"
-                  : "text-slate-500 hover:text-black"
+              className={`transition-all duration-300 underline-offset-4 hover:underline text-slate-500 hover:text-black ${
+                isActive ? "translate-x-0.5" : ""
               }`}
             >
               {item.text}
