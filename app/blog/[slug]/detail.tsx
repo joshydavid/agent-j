@@ -3,7 +3,10 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { getBlogPostBySlug } from "@/app/blog/data";
+import { getBlogPostBySlug, getBlogPosts } from "@/app/blog/data";
+import ActiveToc from "@/app/components/ActiveToc";
+import CodeBlock from "@/app/components/CodeBlock";
+import ReadingProgressBar from "@/app/components/ReadingProgressBar";
 import ScrollToTop from "@/app/components/ScrollToTop";
 
 interface TocItem {
@@ -100,13 +103,54 @@ const customMarkdownComponents = {
     return (
       <a
         href={href}
-        className="premium-sliding-link"
+        className="premium-sliding-link text-slate-600 hover:text-black transition-colors duration-200 underline-offset-4 hover:underline"
         target={isExternal ? "_blank" : undefined}
         rel={isExternal ? "noopener noreferrer" : undefined}
         {...props}
       >
         {children}
       </a>
+    );
+  },
+  blockquote: ({ children, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => {
+    return (
+      <blockquote
+        className="my-6 border-l-4 border-slate-900 bg-slate-50/50 py-3 pl-5 pr-4 italic rounded-r-xl text-slate-700 font-serif text-base"
+        {...props}
+      >
+        {children}
+      </blockquote>
+    );
+  },
+  img: ({ src, alt, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    return (
+      <span className="block my-8 select-none">
+        <span className="relative block overflow-hidden rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className="w-full object-cover transition-transform duration-500 hover:scale-[1.01]"
+            {...props}
+          />
+        </span>
+        {alt && (
+          <span className="block mt-3 text-center text-xs font-mono text-slate-400 lowercase">
+            {alt}
+          </span>
+        )}
+      </span>
+    );
+  },
+  code: ({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    const match = /language-(\w+)/.exec(className || "");
+    const value = String(children).replace(/\n$/, "");
+    return match ? (
+      <CodeBlock language={match[1]} value={value} />
+    ) : (
+      <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-800 text-sm font-mono" {...props}>
+        {children}
+      </code>
     );
   },
 };
@@ -131,10 +175,16 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     );
   }
 
+  const allPosts = await getBlogPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : undefined;
+  const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined;
+
   const tocItems = parseToc(post.content);
 
   return (
     <div className="animate-fade-in">
+      <ReadingProgressBar />
       <ScrollToTop />
       <nav className="mb-8">
         <Link
@@ -163,25 +213,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         {tocItems.length >= 2 && (
           <div className="mb-10 p-5 rounded-2xl bg-slate-50/50 border border-slate-100 hover:border-slate-200/80 hover:bg-slate-50 transition-all duration-300">
             <h2 className="mb-4 text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">on this page</h2>
-            <ul className="flex flex-col gap-y-2">
-              {tocItems.map((item) => (
-                <li
-                  key={item.slug}
-                  style={{ paddingLeft: item.level === 3 ? "1rem" : "0" }}
-                  className="flex items-center gap-2 text-sm"
-                >
-                  <span className="text-slate-300 font-mono text-[10px] select-none">
-                    {item.level === 3 ? "↳" : "•"}
-                  </span>
-                  <a
-                    href={`#${item.slug}`}
-                    className="text-slate-600 hover:text-black transition-colors duration-200 underline-offset-4 hover:underline"
-                  >
-                    {item.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <ActiveToc items={tocItems} />
           </div>
         )}
 
@@ -190,6 +222,50 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             {post.content}
           </ReactMarkdown>
         </div>
+
+        {/* Bottom Post Navigation */}
+        {(prevPost || nextPost) && (
+          <div className="mt-16 pt-8 border-t border-slate-200">
+            <h3 className="mb-6 text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">continue reading</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {prevPost ? (
+                <Link
+                  href={`/blog/${prevPost.slug}`}
+                  className="group p-5 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-slate-450 uppercase tracking-wider block mb-2">← older post</span>
+                    <h4 className="text-base font-semibold text-black group-hover:text-slate-700 transition-colors line-clamp-2">
+                      {prevPost.title}
+                    </h4>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-500 line-clamp-2 font-light">
+                    {prevPost.description}
+                  </p>
+                </Link>
+              ) : (
+                <div className="hidden sm:block" />
+              )}
+              
+              {nextPost && (
+                <Link
+                  href={`/blog/${nextPost.slug}`}
+                  className="group p-5 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 transition-all duration-300 flex flex-col justify-between text-right"
+                >
+                  <div>
+                    <span className="text-[11px] font-mono text-slate-450 uppercase tracking-wider block mb-2">newer post →</span>
+                    <h4 className="text-base font-semibold text-black group-hover:text-slate-700 transition-colors line-clamp-2">
+                      {nextPost.title}
+                    </h4>
+                  </div>
+                  <p className="mt-2 text-xs text-slate-500 line-clamp-2 font-light">
+                    {nextPost.description}
+                  </p>
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
       </article>
     </div>
   );
