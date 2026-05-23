@@ -142,6 +142,9 @@ const customMarkdownComponents = {
       </span>
     );
   },
+  pre: ({ children }: React.HTMLAttributes<HTMLPreElement>) => {
+    return <>{children}</>;
+  },
   code: ({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) => {
     const match = /language-(\w+)/.exec(className || "");
     const value = String(children).replace(/\n$/, "");

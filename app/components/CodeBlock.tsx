@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
 
 interface CodeBlockProps {
@@ -22,20 +22,18 @@ export default function CodeBlock({ language = "text", value }: CodeBlockProps) 
   };
 
   return (
-    <div className="relative my-8 group rounded-xl border border-slate-900 bg-slate-950 shadow-xl overflow-hidden">
+    <div className="relative my-8 group rounded-xl border border-slate-800 bg-slate-800 shadow-xl overflow-hidden">
       {/* Top macOS-style panel */}
-      <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800/60 select-none">
+      <div className="flex items-center justify-between px-4 py-3 select-none">
         {/* Left: Window controls */}
         <div className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
           <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
           <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
         </div>
-        
+
         {/* Middle: Language indicator */}
-        <span className="text-[11px] font-mono font-medium text-slate-400 lowercase tracking-wider">
-          {language}
-        </span>
+        <span className="text-[11px] font-mono font-medium text-slate-400 lowercase tracking-wider">{language}</span>
 
         {/* Right: Copy Button */}
         <button
@@ -58,7 +56,7 @@ export default function CodeBlock({ language = "text", value }: CodeBlockProps) 
       </div>
 
       {/* Code contents panel */}
-      <div className="p-4 overflow-x-auto">
+      <div className="px-4 pb-4 pt-1 overflow-x-auto">
         <pre className="font-mono text-sm leading-relaxed text-slate-100/90 whitespace-pre">
           <code>{value}</code>
         </pre>
