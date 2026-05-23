@@ -5,7 +5,7 @@ description: "why go's concurrency model stands out, how goroutines differ from 
 tags: ["golang", "concurrency", "system-design"]
 ---
 
-concurrency in modern software is often treated like a high-wire act—impressive when it works, but incredibly dangerous if you slip up. in most traditional programming languages, handling concurrent operations means dealing with heavy operating system threads, manual memory locks, and a constant fear of deadlocks.
+concurrency in modern software is often impressive when it works, but incredibly dangerous if you slip up. in most traditional programming languages, handling concurrent operations means dealing with heavy operating system threads, manual memory locks, and a constant fear of deadlocks.
 
 go changes the game. it was designed from the ground up to make concurrency a first-class citizen, introducing a model that is both highly performant and remarkably simple to reason about.
 
@@ -20,12 +20,12 @@ to understand why go's concurrency model is so powerful, we have to look at how 
 in traditional languages, concurrency is usually mapped 1:1 to operating system (os) threads.
 
 - **memory footprint**: each os thread is heavy, allocating a large, fixed-size stack (usually around 1mb of ram). if you want to run 10,000 concurrent tasks, you need 10gb of ram just to keep the threads alive.
-- **context switching**: switching between os threads requires transitioning into the os kernel space to save and restore CPU registers. this is computationally expensive and introduces significant latency.
+- **context switching**: switching between os threads requires transitioning into the os kernel space to save and restore cpu registers. this is computationally expensive and introduces significant latency.
 - **creation cost**: creating and destroying os threads is slow, which is why traditional systems require complex thread pools to recycle them.
 
 ### 2. go concurrency (goroutines)
 
-go does not map concurrency 1:1 to os threads. instead, it introduces **goroutines**—lightweight threads managed by the go runtime scheduler, not the operating system.
+go does not map concurrency 1:1 to os threads. instead, it introduces **goroutines**, lightweight threads managed by the go runtime scheduler, not the operating system.
 
 - **memory footprint**: a goroutine starts with an incredibly small stack size (only 2kb). more importantly, the stack grows and shrinks dynamically in the heap as needed. you can easily run hundreds of thousands of goroutines on a standard laptop without running out of memory.
 - **context switching**: the go runtime multiplexes thousands of goroutines onto a much smaller number of physical os threads (an M:N scheduler model). context switches happen entirely in user space, taking only a few nanoseconds because they don't involve the os kernel.
@@ -49,7 +49,7 @@ instead of using a lock to guard a shared variable, go encourages you to pass th
 
 ## bad practice: sharing memory and hoping for the best
 
-let's look at an example of the "traditional" way of sharing memory, but written in go. suppose we want to concurrently increment a shared counter across multiple background tasks.
+let's look at an example of the traditional way of sharing memory, but written in go. suppose we want to concurrently increment a shared counter across multiple background tasks.
 
 ```go
 package main
@@ -78,7 +78,7 @@ func main() {
 **why this is bad**
 
 1. **data race**: the statement `counter++` is not atomic. under the hood, it performs a read, an increment, and a write. when 1,000 goroutines do this simultaneously, they overwrite each other's work. if you run this program with `go run -race main.go`, it will immediately alert you of a data race, and the final printed number will almost certainly be less than 1,000.
-2. **unreliable synchronization**: using `time.Sleep` to wait for concurrent tasks is a major anti-pattern. if the machine is slow, 1 second might not be enough. if it's fast, we waste time waiting for a sleep timer.
+2. **unreliable synchronisation**: using `time.Sleep` to wait for concurrent tasks is a major anti-pattern. if the machine is slow, 1 second might not be enough. if it's fast, we waste time waiting for a sleep timer.
 
 ---
 
@@ -165,7 +165,7 @@ func main() {
 
 1. **zero data races**: the jobs and results are passed by value through channels. there is no shared memory or variable that multiple goroutines can modify at the same time.
 2. **proper coordination**: `sync.WaitGroup` ensures we wait exactly as long as necessary for all workers to complete, eliminating arbitrary sleep timers.
-3. **clean termination**: closing the channels triggers the `for range` loops to terminate gracefully, avoiding goroutine leaks (where threads stay active in the background forever).
+3. **clean termination**: closing the channels triggers the `for range` loops to terminate gracefully, avoiding goroutine leaks _(where threads stay active in the background forever)._
 
 ---
 
@@ -175,7 +175,7 @@ func main() {
 - **channels are the glue**: they allow safe coordination and data transfer between goroutines without manual lock management.
 - **always coordinate lifecycles**: use `sync.WaitGroup` or context cancellation to manage the lifecycle of your goroutines rather than guessing with sleeps.
 
-by shifting your mindset from **locking shared memory** to **communicating over channels**, writing high-performance, concurrent backend systems in go becomes not only safer, but infinitely more enjoyable.
+by shifting our mindset from **locking shared memory** to **communicating over channels**, writing high-performance, concurrent backend systems in go becomes not only safer, but infinitely more enjoyable.
 
 ## credits / more info
 
