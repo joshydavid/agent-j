@@ -2,7 +2,7 @@
 title: "beyond the lock"
 date: "2026-05-23"
 description: "why go's concurrency model stands out, how goroutines differ from traditional threads, and the patterns for safe concurrent execution"
-tags: ["golang", "concurrency", "go", "backend", "system-design"]
+tags: ["golang", "concurrency", "backend", "system-design"]
 ---
 
 concurrency in modern software is often treated like a high-wire act—impressive when it works, but incredibly dangerous if you slip up. in most traditional programming languages, handling concurrent operations means dealing with heavy operating system threads, manual memory locks, and a constant fear of deadlocks.
@@ -16,13 +16,15 @@ let's demystify how go concurrency works, how it compares to traditional systems
 to understand why go's concurrency model is so powerful, we have to look at how traditional languages (like java, c++, or c#) handle concurrency compared to go.
 
 ### 1. traditional concurrency (os threads)
-in traditional languages, concurrency is usually mapped 1:1 to operating system (os) threads. 
+
+in traditional languages, concurrency is usually mapped 1:1 to operating system (os) threads.
 
 - **memory footprint**: each os thread is heavy, allocating a large, fixed-size stack (usually around 1mb of ram). if you want to run 10,000 concurrent tasks, you need 10gb of ram just to keep the threads alive.
 - **context switching**: switching between os threads requires transitioning into the os kernel space to save and restore CPU registers. this is computationally expensive and introduces significant latency.
 - **creation cost**: creating and destroying os threads is slow, which is why traditional systems require complex thread pools to recycle them.
 
 ### 2. go concurrency (goroutines)
+
 go does not map concurrency 1:1 to os threads. instead, it introduces **goroutines**—lightweight threads managed by the go runtime scheduler, not the operating system.
 
 - **memory footprint**: a goroutine starts with an incredibly small stack size (only 2kb). more importantly, the stack grows and shrinks dynamically in the heap as needed. you can easily run hundreds of thousands of goroutines on a standard laptop without running out of memory.
@@ -33,7 +35,7 @@ go does not map concurrency 1:1 to os threads. instead, it introduces **goroutin
 
 ## the go philosophy: share by communicating
 
-in traditional multi-threaded programming, threads coordinate by **sharing memory**. multiple threads access the same variables, and developers use locks (mutexes) or semaphores to prevent them from reading and writing at the same time. 
+in traditional multi-threaded programming, threads coordinate by **sharing memory**. multiple threads access the same variables, and developers use locks (mutexes) or semaphores to prevent them from reading and writing at the same time.
 
 this approach is notoriously error-prone. if you forget a lock, you get a data race. if you lock in the wrong order, your program deadlocks and freezes.
 
@@ -68,12 +70,13 @@ func main() {
 	}
 
 	// ❌ naive sleep: waiting and hoping all goroutines finish in time
-	time.Sleep(1 * time.Second) 
+	time.Sleep(1 * time.Second)
 	fmt.Printf("final counter value: %d\n", counter)
 }
 ```
 
-### why this is bad:
+**why this is bad**
+
 1. **data race**: the statement `counter++` is not atomic. under the hood, it performs a read, an increment, and a write. when 1,000 goroutines do this simultaneously, they overwrite each other's work. if you run this program with `go run -race main.go`, it will immediately alert you of a data race, and the final printed number will almost certainly be less than 1,000.
 2. **unreliable synchronization**: using `time.Sleep` to wait for concurrent tasks is a major anti-pattern. if the machine is slow, 1 second might not be enough. if it's fast, we waste time waiting for a sleep timer.
 
@@ -111,10 +114,10 @@ func worker(id int, jobs <-chan job, results chan<- result, wg *sync.WaitGroup) 
 
 	for j := range jobs {
 		fmt.Printf("worker %d processing job %d\n", id, j.id)
-		
+
 		// calculate square (our "work")
 		squaredVal := j.value * j.value
-		
+
 		// share the result by communicating through the channel
 		results <- result{
 			jobID:  j.id,
@@ -158,7 +161,8 @@ func main() {
 }
 ```
 
-### why this is correct:
+**why this is correct**
+
 1. **zero data races**: the jobs and results are passed by value through channels. there is no shared memory or variable that multiple goroutines can modify at the same time.
 2. **proper coordination**: `sync.WaitGroup` ensures we wait exactly as long as necessary for all workers to complete, eliminating arbitrary sleep timers.
 3. **clean termination**: closing the channels triggers the `for range` loops to terminate gracefully, avoiding goroutine leaks (where threads stay active in the background forever).
