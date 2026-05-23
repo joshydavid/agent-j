@@ -2,7 +2,7 @@
 title: "beyond the lock"
 date: "2026-05-23"
 description: "why go's concurrency model stands out, how goroutines differ from traditional threads, and the patterns for safe concurrent execution"
-tags: ["golang", "concurrency", "backend", "system-design"]
+tags: ["golang", "concurrency", "system-design"]
 ---
 
 concurrency in modern software is often treated like a high-wire act—impressive when it works, but incredibly dangerous if you slip up. in most traditional programming languages, handling concurrent operations means dealing with heavy operating system threads, manual memory locks, and a constant fear of deadlocks.
