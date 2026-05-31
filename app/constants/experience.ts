@@ -2,6 +2,14 @@ import { Experience } from "@/app/models/types";
 
 export const companies: Experience[] = [
   {
+    id: 5,
+    company: "Dell Technologies",
+    position: "Software Engineer",
+    timeline: "Jun 2026 - Present",
+    logo: "https://joshydavid.s3.us-east-1.amazonaws.com/companies/Dell.png",
+    logoPadding: "p-1",
+  },
+  {
     id: 4,
     company: "CPF Board",
     position: "Software Engineer Intern",
