@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { getBlogPostBySlug, getBlogPosts } from "@/app/blog/data";
 import ActiveToc from "@/app/components/ActiveToc";
 import CodeBlock from "@/app/components/CodeBlock";
+import Mermaid from "@/app/components/Mermaid";
 import ReadingProgressBar from "@/app/components/ReadingProgressBar";
 import ScrollToTop from "@/app/components/ScrollToTop";
 
@@ -148,6 +149,9 @@ const customMarkdownComponents = {
   code: ({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) => {
     const match = /language-(\w+)/.exec(className || "");
     const value = String(children).replace(/\n$/, "");
+    if (match && match[1] === "mermaid") {
+      return <Mermaid value={value} />;
+    }
     return match ? (
       <CodeBlock language={match[1]} value={value} />
     ) : (
