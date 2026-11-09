@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div className="animate-fade-in">
       <section className="mb-12 border-b border-slate-200 pb-8">
-        <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">joshua</h1>
+        <h1 className="mb-2 text-4xl font-bold tracking-tight text-black">Joshua</h1>
         <p className="flex items-center gap-2 text-lg leading-7 text-slate-600 max-w-2xl">
-          software engineer, dell technologies
+          Infrastructure Software Engineer, Dell Technologies
         </p>
       </section>
 
@@ -16,11 +16,10 @@ export default function Home() {
         <h2 className="mb-4 text-sm font-bold tracking-widest uppercase text-black">about</h2>
         <div className="space-y-4 text-[15px] leading-relaxed text-slate-600 max-w-2xl">
           <p>
-            i&apos;m a software engineer building at the intersection of cloud-native infrastructure and agentic ai.
+              hey, i’m joshua 👋 an infrastructure software engineer at dell technologies. i deploy and run red hat openshift clusters on bare metal, across hardware, networking, and storage.
           </p>
           <p>
-            recently i&rsquo;ve been diving into stateful multi-agent systems and the underlying automation that keeps
-            them reliable.
+            currently dabbling with container-native virtualisation using kubevirt on type 1 kvm/qemu hypervisor.
           </p>
           <p>away from the terminal, i&apos;m usually brewing a shot of espresso or at the gym.</p>
         </div>

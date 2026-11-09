@@ -4,7 +4,7 @@ export const companies: Experience[] = [
   {
     id: 5,
     company: "Dell Technologies",
-    position: "Software Engineer",
+    position: "Infrastructure Software Engineer",
     timeline: "Jun 2026 - Present",
     logo: "https://joshydavid.s3.us-east-1.amazonaws.com/companies/Dell.png",
     logoPadding: "p-1",
@@ -36,12 +36,5 @@ export const companies: Experience[] = [
     position: "Software Engineer Intern",
     timeline: "May 2022 - Aug 2022",
     logo: "https://joshydavid.s3.us-east-1.amazonaws.com/companies/BSG.png",
-  },
-  {
-    id: 0,
-    company: "Sayocode",
-    position: "Founding Software Engineer",
-    timeline: "Apr 2018 - May 2020",
-    logo: "https://joshydavid.s3.us-east-1.amazonaws.com/companies/Sayocode.png",
   },
 ];
